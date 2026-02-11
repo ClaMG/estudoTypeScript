@@ -10,5 +10,5 @@ export const makeDeleteUser = () => {
 
     const deleteUserController = new ControllerDelete(deleteUserCase);
     
-        return deleteUserController;
+    return deleteUserController;
 }
