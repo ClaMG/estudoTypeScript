@@ -1,10 +1,10 @@
 import {User} from '../entities/entitiesUser.js'
 import {IUserRepository} from '../port/interfaceRepository.js'
-
+import {IByAllRequest} from '../port/interfaceUserCase.js'
 export class ByAllUserCase{
     constructor(private byAllUserRepository: IUserRepository) {}
 
-    async execute(idUser: User["id"]): Promise<User> {
+    async execute({idUser}: IByAllRequest): Promise<User> {
         if(idUser == null){
             throw new Error("Não conseguimos indetificar o seu usuario")
         }
@@ -19,6 +19,8 @@ export class ByAllUserCase{
             throw new Error("Você não é admin, não pode visualizar outros usuarios")
         }
 
-        return idExists
+        const { password, ...userWithoutPassword } = idExists;
+
+        return userWithoutPassword
     } 
 }

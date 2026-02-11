@@ -1,11 +1,12 @@
 import {IUserRepository} from '../port/interfaceRepository.js'
 import {comparePassword} from '../../utils/security/encryptPassword.js'
 import jwt from 'jsonwebtoken';
+import {ILoginRequest} from '../port/interfaceUserCase.js'
 
 export class LoginUserCase{
     constructor(private loginUserRepository: IUserRepository) {}
 
-    async execute(name: string, password: string): Promise<{ token: string }> {
+    async execute({name, password}:ILoginRequest): Promise<{ token: string }> {
         if(name == "" || password == ""){
             throw new Error("Preencha todos os campos")
         }

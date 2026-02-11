@@ -1,10 +1,11 @@
 import {IUserRepository} from '../port/interfaceRepository.js'
 import {User} from '../entities/entitiesUser.js'
+import {IDeleteRequest} from '../port/interfaceUserCase.js'
 
 export class DeleteUserCase{
     constructor(private deleteUserRepository: IUserRepository) {}
 
-    async execute(idUser: User["id"], name: string): Promise<void> {
+    async execute({idUser, name}:IDeleteRequest): Promise<void> {
         if(idUser == null || name == '' ){
             throw new Error("Preencha todos os campos")
         }

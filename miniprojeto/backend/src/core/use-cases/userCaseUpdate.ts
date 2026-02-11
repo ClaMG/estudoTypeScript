@@ -1,16 +1,17 @@
 import {User} from '../entities/entitiesUser.js'
 import {IUserRepository} from '../port/interfaceRepository.js'
 import {hashPassword} from '../../utils/security/encryptPassword.js'
+import {IUpdateRequest} from '../port/interfaceUserCase.js'
 export class UpdateUserCase{
     constructor(private updateUserRepository: IUserRepository) {}
 
-    async execute(idUser: User["id"], id:User["id"], name: string, password: string, email: string, admin: boolean): Promise<void> {
+    async execute({idUser, id, name, password, email, admin}:IUpdateRequest): Promise<void> {
         if(idUser == null ||id== null || name == "" || email == ""){
             throw new Error("Preencha todos os campos")
         }
 
         let adminStatus: boolean = false
-        let passwordEnd: string = password
+        let passwordEnd: string = password || ""
         
         const idExistsUpdated = await this.updateUserRepository.findById(idUser)
 
@@ -66,7 +67,7 @@ export class UpdateUserCase{
 
         const encryptPassword: string = (await hashPassword(passwordEnd)).toString()
 
-        const data: User = new User(name, encryptPassword, email, adminStatus, id);
+        const data: User = new User(name, email, encryptPassword, adminStatus, id);
 
         await this.updateUserRepository.update(data)
         

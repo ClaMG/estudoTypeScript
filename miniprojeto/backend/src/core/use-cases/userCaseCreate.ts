@@ -2,18 +2,18 @@ import {User} from '../entities/entitiesUser.js'
 import {IUserRepository} from '../port/interfaceRepository.js'
 import {hashPassword} from '../../utils/security/encryptPassword.js'
 import {generateRandomPassword} from '../../utils/security/randomPassword.js'
+import { ICreateRequest } from '../port/interfaceUserCase.js'
 
 export class CreateUserCase{
     constructor(private saveUserRepository: IUserRepository) {}
-
-    async execute(idUser: User["id"], name: string, password: string, email: string, admin: boolean): Promise<void> {
+    async execute({idUser, name, password, email, admin}: ICreateRequest): Promise<void> {
         if(name == "" || email == ""){
             throw new Error("Preencha todos os campos")
         }
 
         let adminStatus: boolean = false
         let sendEmail: boolean = false
-        let passwordEnd: string = password
+        let passwordEnd: string = password || ""
         
         if(idUser != null){
             const idExists = await this.saveUserRepository.findById(idUser)
@@ -48,7 +48,7 @@ export class CreateUserCase{
 
         const encryptPassword: string = (await hashPassword(passwordEnd)).toString()
 
-        const data: User = new User(name, encryptPassword, email, adminStatus);
+        const data: User = new User(name, email, encryptPassword, adminStatus);
 
         if(sendEmail){
             //enviar email com a senha nova do adm einformar que é bom atualizar
