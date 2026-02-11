@@ -1,6 +1,6 @@
 import {ICreateRequest} from '../../../core/port/interfaceUserCase.js'
 
-export class RegisterUserDTO {
+export class CreateUserDTO {
     public readonly idUser?: number;
     public readonly name: string;
     public readonly email: string;
