@@ -1,18 +1,17 @@
 import app from './app'
-//import { Sequelize } from 'sequelize'
-import {InMemoryUserRepository} from '../adpter/outbound/repository/repository'
-import {CreateUserCase} from '../core/use-cases/userCaseCreate'
+import dbConfig from '../cofig/configDb'
 
 const PORT: number = Number(process.env.PORT)
 
 function startServer(): void {
   try {
-    //sqlize
 
-    const userRepository = new InMemoryUserRepository();
+    dbConfig.authenticate();
+    console.log('Conexão bem sucedida com o banco de dados')
 
-// 2. Injeta o repositório no Caso de Uso
-const createUserCase = new CreateUserCase(userRepository);
+    dbConfig.sync({ force: false }); 
+    console.log('Modelos sincronizados.');
+
     app.listen(PORT, () => {
       console.log(`Servidor rodando em modo IN-MEMORY.`);
       console.log(`Local: http://localhost:${PORT}`);

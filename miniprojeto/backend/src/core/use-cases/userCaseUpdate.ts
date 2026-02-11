@@ -2,6 +2,7 @@ import {User} from '../entities/entitiesUser.js'
 import {IUserRepository} from '../port/interfaceRepository.js'
 import {hashPassword} from '../../utils/security/encryptPassword.js'
 import {IUpdateRequest} from '../port/interfaceUserCase.js'
+import {validateEmail} from '../../utils/validators/validateEmail.js'
 export class UpdateUserCase{
     constructor(private updateUserRepository: IUserRepository) {}
 
@@ -29,18 +30,18 @@ export class UpdateUserCase{
             if(idUser != id){
                 throw new Error("Você não pode alterar outros usuários")
             }
-            if(password == ""){
+            if(password == "" || passwordEnd == ""){
                 throw new Error("Sua senha é obrigatória para atualizar os dados")
             }
         }else{
             if (idUser != id){
-                if(password != ""){
+                if(password != "" || passwordEnd != ""){
                     throw new Error("Você não pode alterar a senha de outros usuários")
                 }else{
                     passwordEnd = idExists.password
                 }
             }else{
-                if(password == ""){
+                if(password == "" || passwordEnd == ""){
                     throw new Error("Sua senha é obrigatória para atualizar os dados")
                 }
             }
@@ -55,6 +56,12 @@ export class UpdateUserCase{
                 throw new Error("Nome de usuário já está em uso.")
             }
             
+        }
+
+        const emailValidate = validateEmail(email)
+        
+        if(!emailValidate){
+            throw new Error("Formato incorreto do email, adicione @ e .com")
         }
 
         if(email != idExists.email){

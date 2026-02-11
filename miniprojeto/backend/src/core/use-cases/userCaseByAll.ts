@@ -19,8 +19,8 @@ export class ByAllUserCase{
             throw new Error("Você não é admin, não pode visualizar outros usuarios")
         }
 
-        const { password, ...userWithoutPassword } = idExists;
+        
 
-        return userWithoutPassword
+        return idExists
     } 
 }

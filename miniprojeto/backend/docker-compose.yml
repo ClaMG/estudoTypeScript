@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16
+    container_name: cadastro_ts
+    restart: always
+    env_file: .env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - cadastro_ts:/var/lib/postgresql/data
+
+volumes:
+  cadastro_ts:

@@ -3,7 +3,8 @@ import {IUserRepository} from '../port/interfaceRepository.js'
 import {hashPassword} from '../../utils/security/encryptPassword.js'
 import {generateRandomPassword} from '../../utils/security/randomPassword.js'
 import { ICreateRequest } from '../port/interfaceUserCase.js'
-
+import MailProvider from '../../utils/to_send/toSendEmail.js'
+import {validateEmail} from '../../utils/validators/validateEmail.js'
 export class CreateUserCase{
     constructor(private saveUserRepository: IUserRepository) {}
     async execute({idUser, name, password, email, admin}: ICreateRequest): Promise<void> {
@@ -12,7 +13,7 @@ export class CreateUserCase{
         }
 
         let adminStatus: boolean = false
-        let sendEmail: boolean = false
+        let sendEmailStatus: boolean = false
         let passwordEnd: string = password || ""
         
         if(idUser != null){
@@ -24,14 +25,14 @@ export class CreateUserCase{
 
             if(idExists.admin){
                 passwordEnd = generateRandomPassword(8)
-                sendEmail= true
+                sendEmailStatus= true
                 if(admin != undefined){
                     adminStatus= admin
                 }
             }
         }
 
-        if(password == ""){
+        if(password == "" || passwordEnd == ""){
             throw new Error("Preencha todos os campos")
         }
 
@@ -39,6 +40,12 @@ export class CreateUserCase{
 
         if(userExists){
             throw new Error("Nome de usuario já existe")
+        }
+
+        const emailValidate = validateEmail(email)
+
+        if(!emailValidate){
+            throw new Error("Formato incorreto do email, adicione @ e .com")
         }
 
         const emailExists = await this.saveUserRepository.findByEmail(email)
@@ -50,8 +57,12 @@ export class CreateUserCase{
 
         const data: User = new User(name, email, encryptPassword, adminStatus);
 
-        if(sendEmail){
-            //enviar email com a senha nova do adm einformar que é bom atualizar
+        if(sendEmailStatus){
+           const sendEmailtest = await MailProvider.sendEmail(email, name, passwordEnd)
+
+           if(!sendEmailtest){
+                throw new Error("Não foi possivel enviar o email com sua senha")
+           }
         }
 
 

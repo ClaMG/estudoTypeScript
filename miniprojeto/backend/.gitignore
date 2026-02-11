@@ -8,3 +8,10 @@
 ./node_modules
 node_modules
 
+#docker
+.docker
+./docker
+*.docker
+.Docker
+./Docker
+*.Docker

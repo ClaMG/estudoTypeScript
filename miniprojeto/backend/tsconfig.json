@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "bundler", // <-- Mude de "node" para "bundler"
+    "moduleResolution": "bundler", 
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "rootDir": "./src",
@@ -11,7 +11,7 @@
 
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": false, // <-- Mude para FALSE para facilitar os imports
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "skipLibCheck": true
   },
