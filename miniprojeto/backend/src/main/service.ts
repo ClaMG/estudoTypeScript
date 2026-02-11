@@ -1,6 +1,6 @@
 import app from './app'
 //import { Sequelize } from 'sequelize'
-import {InMemoryUserRepository} from '../infra/outbound/repository/repository'
+import {InMemoryUserRepository} from '../adpter/outbound/repository/repository'
 import {CreateUserCase} from '../core/use-cases/userCaseCreate'
 
 const PORT: number = Number(process.env.PORT)

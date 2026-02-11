@@ -5,11 +5,11 @@ export interface IUserRepository{
     update(user: User): Promise<string>
     findByName( name: User["name"]): Promise<User | null>
     findByEmail( email: User["email"]): Promise<User | null>
-    findById( id: User["id"]): Promise<User | null>//
+    findById( id: User["id"]): Promise<User | null>
     delete(id: User["id"]): Promise<void>;
 
 
     //admin
-    seeAll(): Promise<string>//
+    seeAll(): Promise<string>
     
 }

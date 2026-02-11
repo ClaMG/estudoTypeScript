@@ -1,29 +1,38 @@
 import {User} from '../entities/entitiesUser.js'
 import {IUserRepository} from '../port/interfaceRepository.js'
 import {hashPassword} from '../../utils/security/encryptPassword.js'
+import {generateRandomPassword} from '../../utils/security/randomPassword.js'
 
 export class CreateUserCase{
     constructor(private saveUserRepository: IUserRepository) {}
 
     async execute(idUser: User["id"], name: string, password: string, email: string, admin: boolean): Promise<void> {
-        if(name == "" || password == "" || email == ""){
+        if(name == "" || email == ""){
             throw new Error("Preencha todos os campos")
         }
 
         let adminStatus: boolean = false
+        let sendEmail: boolean = false
+        let passwordEnd: string = password
         
-
-        if(idUser != 0 || idUser != null){
+        if(idUser != null){
             const idExists = await this.saveUserRepository.findById(idUser)
 
             if(!idExists){
                 throw new Error("Não conseguimos indetificar o seu usuario")
             }
 
-            if(admin != null){
-                adminStatus= admin
+            if(idExists.admin){
+                passwordEnd = generateRandomPassword(8)
+                sendEmail= true
+                if(admin != undefined){
+                    adminStatus= admin
+                }
             }
+        }
 
+        if(password == ""){
+            throw new Error("Preencha todos os campos")
         }
 
         const userExists = await this.saveUserRepository.findByName(name)
@@ -37,9 +46,14 @@ export class CreateUserCase{
             throw new Error("Email já esta sendo utilizado")
         }
 
-        const encryptPassword: string = (await hashPassword(password)).toString()
+        const encryptPassword: string = (await hashPassword(passwordEnd)).toString()
 
         const data: User = new User(name, encryptPassword, email, adminStatus);
+
+        if(sendEmail){
+            //enviar email com a senha nova do adm einformar que é bom atualizar
+        }
+
 
         await this.saveUserRepository.save(data)
         

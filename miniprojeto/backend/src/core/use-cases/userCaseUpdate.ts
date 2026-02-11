@@ -1,17 +1,16 @@
 import {User} from '../entities/entitiesUser.js'
 import {IUserRepository} from '../port/interfaceRepository.js'
 import {hashPassword} from '../../utils/security/encryptPassword.js'
-
 export class UpdateUserCase{
     constructor(private updateUserRepository: IUserRepository) {}
 
     async execute(idUser: User["id"], id:User["id"], name: string, password: string, email: string, admin: boolean): Promise<void> {
-        if(id== null || name == "" || password == "" || email == ""){
+        if(idUser == null ||id== null || name == "" || email == ""){
             throw new Error("Preencha todos os campos")
         }
 
-
         let adminStatus: boolean = false
+        let passwordEnd: string = password
         
         const idExistsUpdated = await this.updateUserRepository.findById(idUser)
 
@@ -19,21 +18,35 @@ export class UpdateUserCase{
             throw new Error("Não conseguimos indetificar o seu usuario")
         }
 
-        if(!idExistsUpdated.admin && idExistsUpdated.id != id){
-            throw new Error("Você não pode alterar outros usuários");
-        }
-
-        if(idUser != 0 || idUser != null && admin != null){
-            adminStatus= admin
-
-        }
-
         const idExists = await this.updateUserRepository.findById(id)
 
-        if(!idExists){
+        if(!idExists || !idExists.password){
             throw new Error("Usuario para atualizar não existe")
         }
 
+        if(!idExistsUpdated.admin){
+            if(idUser != id){
+                throw new Error("Você não pode alterar outros usuários")
+            }
+            if(password == ""){
+                throw new Error("Sua senha é obrigatória para atualizar os dados")
+            }
+        }else{
+            if (idUser != id){
+                if(password != ""){
+                    throw new Error("Você não pode alterar a senha de outros usuários")
+                }else{
+                    passwordEnd = idExists.password
+                }
+            }else{
+                if(password == ""){
+                    throw new Error("Sua senha é obrigatória para atualizar os dados")
+                }
+            }
+            if(admin != undefined){
+                adminStatus= admin
+            }
+        }
         
         if(name != idExists.name){
             const userExists = await this.updateUserRepository.findByName(name)
@@ -51,7 +64,7 @@ export class UpdateUserCase{
 
         }
 
-        const encryptPassword: string = (await hashPassword(password)).toString()
+        const encryptPassword: string = (await hashPassword(passwordEnd)).toString()
 
         const data: User = new User(name, encryptPassword, email, adminStatus, id);
 
