@@ -11,7 +11,6 @@ class AnimalModel extends Model<AnimalAttributes, AnimalCreationAttributes> impl
     public age!: number
     public species!: string
     public gender!: string
-    public code!: number
 }
 
 
@@ -46,10 +45,6 @@ AnimalModel.init(
     },
     gender: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    code: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     }
   },

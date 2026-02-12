@@ -5,5 +5,4 @@ export interface AnimalAttributes {
     age: number
     species: string
     gender: string
-    code: number
 }
