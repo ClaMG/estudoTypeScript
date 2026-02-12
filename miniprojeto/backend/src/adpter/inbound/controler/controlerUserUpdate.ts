@@ -7,7 +7,16 @@ export class ControllerUpdate {
 
     async handle(req: Request, res: Response): Promise<Response> {
         try {
-            const userDTO = new UpdateUserDTO(req.body);
+            const idDoToken = req.idUser
+            const { id, name, email, password, admin } = req.body;
+            const userDTO = new UpdateUserDTO({
+                idUser: idDoToken, 
+                id: id, 
+                name: name, 
+                email: email, 
+                password: password, 
+                admin: admin
+            });
             const result = await this.useCase.execute(userDTO);
             return res.status(201).json({
                 message: "Usuário atualizado com sucesso!",

@@ -45,11 +45,11 @@ export class UpdateUserCase{
         }else{
             //Adm
             if (idUser != id && passwordEnd != "" ){//user diferente
-                    throw new Error("Você não pode alterar a senha de outros usuários(adm)")
+                throw new Error("Você não pode alterar a senha de outros usuários dessa forma")
             }
             if(idUser == id){//si mesmo
                 if(password == "" || passwordEnd == ""){//password vazia
-                    throw new Error("Sua senha é obrigatória para atualizar os dados(adm)")
+                    throw new Error("Sua senha é obrigatória para atualizar os dados")
                 }
             }
             if(admin != undefined){//se informar o adm

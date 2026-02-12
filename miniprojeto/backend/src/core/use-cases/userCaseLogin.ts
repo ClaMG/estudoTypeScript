@@ -24,7 +24,7 @@ export class LoginUserCase{
         }
 
         const token:string = jwt.sign(
-            {id: userExists.id}, 
+            {idUser: userExists.id}, 
             process.env.JWT_SECRET || 'chave_mestra_temporaria_123', 
             { expiresIn: '1d' }
         );

@@ -7,7 +7,10 @@ export class ControllerDelete {
 
     async handle(req: Request, res: Response): Promise<Response> {
         try {
-            const userDTO = new DeleteUserDTO(req.body);
+            const idDoToken = req.idUser
+            const { name } = req.body
+
+            const userDTO = new DeleteUserDTO({ idUser: idDoToken, name: name  });
             const result = await this.useCase.execute(userDTO);
             return res.status(201).json({
                 message: "Usuário deletado com sucesso!",

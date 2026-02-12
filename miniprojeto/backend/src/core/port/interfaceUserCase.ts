@@ -1,11 +1,9 @@
 import {User} from '../entities/entitiesUser'
 
 export interface ICreateRequest {
-    idUser?: User["id"]
     name: string
     email: string 
-    password?: string  
-    admin?: boolean
+    password: string  
 }
 
 export interface IUpdateRequest {
