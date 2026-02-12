@@ -6,12 +6,12 @@ import {ILoginRequest} from '../port/interfaceUserCase.js'
 export class LoginUserCase{
     constructor(private loginUserRepository: IUserRepository) {}
 
-    async execute({name, password}:ILoginRequest): Promise<{ token: string }> {
-        if(name == "" || password == ""){
+    async execute({user, password}:ILoginRequest): Promise<{ token: string }> {
+        if(user == "" || password == ""){
             throw new Error("Preencha todos os campos")
         }
 
-        const userExists = await this.loginUserRepository.findByName(name)
+        const userExists = await this.loginUserRepository.findByUser(user)
 
         if(!userExists || !userExists.password){
             throw new Error("Nome de usuario não existe")

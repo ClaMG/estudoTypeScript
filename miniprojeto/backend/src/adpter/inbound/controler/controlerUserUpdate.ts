@@ -8,9 +8,10 @@ export class ControllerUpdate {
     async handle(req: Request, res: Response): Promise<Response> {
         try {
             const idDoToken = req.idUser
-            const { id, name, email, password, admin } = req.body;
+            const { id, user, name, email, password, admin } = req.body;
             const userDTO = new UpdateUserDTO({
                 idUser: idDoToken, 
+                user: user,
                 id: id, 
                 name: name, 
                 email: email, 

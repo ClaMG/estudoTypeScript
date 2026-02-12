@@ -25,13 +25,14 @@ export class UserRepositories implements IUserRepository{
         return affectedRows > 0 ? "Atualizado" : "Erro ao atualizar";
     }
 
-    async findByName(name: User['name']): Promise<User | null> {
+    async findByUser(user: User['user']): Promise<User | null> {
         const userFound = await this.userModel.findOne({
-            where: { name: name },
+            where: { user: user },
             raw: true
         })as any
         if (!userFound) return null;
         return new User(
+            userFound.user,
             userFound.name, 
             userFound.email, 
             userFound.password, 

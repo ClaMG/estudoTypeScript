@@ -6,8 +6,8 @@ import {validateEmail} from '../../utils/validators/validateEmail.js'
 export class UpdateUserCase{
     constructor(private updateUserRepository: IUserRepository) {}
 
-    async execute({idUser, id, name, email, password, admin}:IUpdateRequest): Promise<void> {
-        if(idUser == null ||id== null || name == "" || email == ""){
+    async execute({idUser, id, user, name, email, password, admin}:IUpdateRequest): Promise<void> {
+        if(idUser == null ||id== null || user=="" || name == "" || email == ""){
             throw new Error("Preencha todos os campos")
         }
 
@@ -57,8 +57,8 @@ export class UpdateUserCase{
             }
         }
         
-        if(name != idExists.name){
-            const userExists = await this.updateUserRepository.findByName(name)
+        if(user != idExists.user){
+            const userExists = await this.updateUserRepository.findByUser(user)
             if(userExists && userExists.id != id){
                 throw new Error("Nome de usuário já está em uso.")
             }
@@ -81,7 +81,7 @@ export class UpdateUserCase{
 
         const encryptPassword: string = (await hashPassword(passwordEnd)).toString()
 
-        const data: User = new User(name, email, encryptPassword, adminStatus, id);
+        const data: User = new User(user, name, email, encryptPassword, adminStatus, id);
 
         await this.updateUserRepository.update(data)
         

@@ -5,12 +5,12 @@ import { ICreateRequest } from '../port/interfaceUserCase.js'
 import {validateEmail} from '../../utils/validators/validateEmail.js'
 export class CreateUserCase{
     constructor(private saveUserRepository: IUserRepository) {}
-    async execute({name, email, password}: ICreateRequest): Promise<void> {
-        if(name == "" || email == "" || password == ""){
+    async execute({user, name, email, password}: ICreateRequest): Promise<void> {
+        if(user == "" || name == "" || email == "" || password == ""){
             throw new Error("Preencha todos os campos")
         }
 
-        const userExists = await this.saveUserRepository.findByName(name)
+        const userExists = await this.saveUserRepository.findByUser(user)
 
         if(userExists){
             throw new Error("Nome de usuario já existe")
@@ -29,7 +29,7 @@ export class CreateUserCase{
 
         const encryptPassword: string = (await hashPassword(password)).toString()
 
-        const data: User = new User(name, email, encryptPassword);
+        const data: User = new User(user, name, email, encryptPassword);
 
         await this.saveUserRepository.save(data)
         

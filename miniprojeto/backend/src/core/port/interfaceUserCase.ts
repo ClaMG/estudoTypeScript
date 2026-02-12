@@ -1,6 +1,7 @@
 import {User} from '../entities/entitiesUser'
 
 export interface ICreateRequest {
+    user: string
     name: string
     email: string 
     password: string  
@@ -9,6 +10,7 @@ export interface ICreateRequest {
 export interface IUpdateRequest {
     idUser: User["id"]
     id:User["id"]
+    user: string
     name: string
     email: string
     password?: string 
@@ -17,17 +19,17 @@ export interface IUpdateRequest {
 
 export interface IDeleteRequest {
     idUser: User["id"]
-    name: string
+    user: string
 }
 
 export interface ILoginRequest {
-    name: string
+    user: string
     password: string 
 }
 
 export interface IByIdRequest {
     idUser:User["id"]
-    name: string
+    user: string
 }
 
 export interface IByAllRequest {

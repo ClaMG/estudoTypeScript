@@ -8,8 +8,8 @@ export class ControllerById {
     async handle(req: Request, res: Response): Promise<Response> {
         try {
             const idDoToken = req.idUser
-            const { name } = req.body
-            const userDTO = new ByIdUserDTO({ idUser: idDoToken, name: name  })
+            const { user } = req.body
+            const userDTO = new ByIdUserDTO({ idUser: idDoToken, user: user  })
             const result = await this.useCase.execute(userDTO)
             return res.status(201).json(result)
         } catch (error: any) {

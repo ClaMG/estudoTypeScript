@@ -5,6 +5,7 @@ import {UserAttributes} from './interface/interfaceUser.js'
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 class UserModel extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: number;
+  public user!: string;
   public name!: string;
   public email!: string;
   public password!: string;
@@ -18,6 +19,10 @@ UserModel.init(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
+    },
+    user: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     name: {

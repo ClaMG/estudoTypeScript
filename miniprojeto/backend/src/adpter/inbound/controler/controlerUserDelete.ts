@@ -8,9 +8,9 @@ export class ControllerDelete {
     async handle(req: Request, res: Response): Promise<Response> {
         try {
             const idDoToken = req.idUser
-            const { name } = req.body
+            const { user } = req.body
 
-            const userDTO = new DeleteUserDTO({ idUser: idDoToken, name: name  });
+            const userDTO = new DeleteUserDTO({ idUser: idDoToken, user: user  });
             const result = await this.useCase.execute(userDTO);
             return res.status(201).json({
                 message: "Usuário deletado com sucesso!",

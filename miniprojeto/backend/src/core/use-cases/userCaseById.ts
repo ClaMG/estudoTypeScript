@@ -4,7 +4,7 @@ import {IByIdRequest} from '../port/interfaceUserCase.js'
 export class ByIdUserCase{
     constructor(private byIdUserRepository: IUserRepository) {}
 
-    async execute({idUser, name}:IByIdRequest): Promise<User> {
+    async execute({idUser, user}:IByIdRequest): Promise<User> {
         if(idUser == null){
             throw new Error("Não conseguimos indetificar o seu usuario")
         }
@@ -15,7 +15,7 @@ export class ByIdUserCase{
             throw new Error("Não conseguimos indetificar o seu usuario")
         }
 
-        const userExists = await this.byIdUserRepository.findByName(name)
+        const userExists = await this.byIdUserRepository.findByUser(user)
 
         if(!userExists){
             throw new Error("Não conseguimos indetificar o usuario que você deseja visualizar")

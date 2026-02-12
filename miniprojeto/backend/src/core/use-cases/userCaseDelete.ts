@@ -5,8 +5,8 @@ import {IDeleteRequest} from '../port/interfaceUserCase.js'
 export class DeleteUserCase{
     constructor(private deleteUserRepository: IUserRepository) {}
 
-    async execute({idUser, name}:IDeleteRequest): Promise<void> {
-        if(idUser == null || name == '' ){
+    async execute({idUser, user}:IDeleteRequest): Promise<void> {
+        if(idUser == null || user == '' ){
             throw new Error("Preencha todos os campos")
         }
 
@@ -16,7 +16,7 @@ export class DeleteUserCase{
             throw new Error("Não conseguimos indetificar o seu usuario")
         }
 
-        const userExists = await this.deleteUserRepository.findByName(name)
+        const userExists = await this.deleteUserRepository.findByUser(user)
 
         if(!userExists){
             throw new Error("Nome de usuario não existe")
