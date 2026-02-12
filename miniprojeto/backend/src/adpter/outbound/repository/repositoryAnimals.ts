@@ -33,7 +33,6 @@ export class AnimalRepositories implements IAnimalRepository{
             where: {
                 idUser: animal.idUser,
                 name: animal.name,
-                age: animal.age,
                 species: animal.species,
                 gender: animal.gender
             },

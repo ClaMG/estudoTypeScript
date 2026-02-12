@@ -18,15 +18,12 @@ export interface IUpdateAnimalRequest {
 }
 
 export interface IDeleteAnimalRequest {
+    id: Animal["id"]
     idUser: Animal["idUser"]
     name: string
 }
 
-export interface IByIdAnimalRequest {
-    id: Animal["id"]
-    idUser: Animal["idUser"]
-}
-
 export interface IByAllAnimalRequest {
+    idView: Animal["idView"]
     idUser: Animal["idUser"]
 }

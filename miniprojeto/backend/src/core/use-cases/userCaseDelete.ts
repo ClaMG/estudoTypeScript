@@ -1,5 +1,4 @@
 import {IUserRepository} from '../port/interfaceRepository.js'
-import {User} from '../entities/entitiesUser.js'
 import {IDeleteRequest} from '../port/interfaceUserCase.js'
 
 export class DeleteUserCase{
