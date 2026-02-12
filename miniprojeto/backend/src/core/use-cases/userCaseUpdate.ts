@@ -11,7 +11,6 @@ export class UpdateUserCase{
             throw new Error("Preencha todos os campos")
         }
 
-
         let adminStatus: boolean = false
         let passwordEnd: string = password || ""
         
@@ -57,7 +56,7 @@ export class UpdateUserCase{
             }
         }
         
-        if(user != idExists.user){
+        if(user != idExists.user){//Verifica se o usuario já esta sendo usado
             const userExists = await this.updateUserRepository.findByUser(user)
             if(userExists && userExists.id != id){
                 throw new Error("Nome de usuário já está em uso.")
@@ -71,12 +70,11 @@ export class UpdateUserCase{
             throw new Error("Formato incorreto do email, adicione @ e .com")
         }
 
-        if(email != idExists.email){
+        if(email != idExists.email){//Verifica se o email já esta sendo usado
             const emailExists = await this.updateUserRepository.findByEmail(email)
             if(emailExists && emailExists.id != id){
                 throw new Error("Email já está em uso")
             }
-
         }
 
         const encryptPassword: string = (await hashPassword(passwordEnd)).toString()

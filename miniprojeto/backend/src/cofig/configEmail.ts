@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import {IMailConfig} from './interfaceEmail'
+import {IMailConfig} from './interface/interfaceEmail.js'
 
 const mailConfig: IMailConfig = {
     host: "smtp.gmail.com",

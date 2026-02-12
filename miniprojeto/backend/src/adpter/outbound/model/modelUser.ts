@@ -12,7 +12,6 @@ class UserModel extends Model<UserAttributes, UserCreationAttributes> implements
   public admin!: boolean;
 }
 
-
 UserModel.init(
   {
     id: {
