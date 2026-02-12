@@ -6,6 +6,7 @@ export class UserRepositories implements IUserRepository{
     constructor(private userModel: ModelStatic<Model<any, any>>) {}
     async save(user: User): Promise<void> {
         await this.userModel.create({
+            user: user.user,
             name: user.name, 
             email: user.email,
             password: user.password,
@@ -15,6 +16,7 @@ export class UserRepositories implements IUserRepository{
 
     async update(user: User): Promise<string> {
         const [affectedRows] = await this.userModel.update({
+            user: user.user,
             name: user.name,
             email: user.email,
             password: user.password,
@@ -48,6 +50,7 @@ export class UserRepositories implements IUserRepository{
         })as any
         if (!userFound) return null;
         return new User(
+            userFound.user,
             userFound.name, 
             userFound.email, 
             userFound.password, 
@@ -64,6 +67,7 @@ export class UserRepositories implements IUserRepository{
 
         if (!userFound) return null;
         return new User(
+            userFound.user,
             userFound.name, 
             userFound.email, 
             userFound.password, 
@@ -83,6 +87,7 @@ export class UserRepositories implements IUserRepository{
             order: [['id', 'ASC']]
          }) as any[]
         return userFound.map(u => new User(
+        u.user,
         u.name, 
         u.email, 
         u.password, 

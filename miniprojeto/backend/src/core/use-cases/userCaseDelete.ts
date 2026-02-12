@@ -19,7 +19,11 @@ export class DeleteUserCase{
         const userExists = await this.deleteUserRepository.findByUser(user)
 
         if(!userExists){
-            throw new Error("Nome de usuario não existe")
+            throw new Error("Usuario não existe")
+        }
+
+        if(userExists.id == 1){//Admin supremo
+            throw new Error("Este Usuario não pode ser deletado")
         }
 
         if(!idExists.admin && idUser != userExists.id){//user comum tentando deletar outro user

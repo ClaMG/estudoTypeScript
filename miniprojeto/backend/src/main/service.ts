@@ -15,7 +15,7 @@ function startServer(): void {
     app.listen(PORT, () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);
     });
-    
+
   } catch (error) {
     console.error(' Erro crítico ao iniciar o servidor:', error);
     process.exit(1);
