@@ -24,6 +24,6 @@ export interface IDeleteAnimalRequest {
 }
 
 export interface IByAllAnimalRequest {
-    idView: Animal["idView"]
+    idView?: Animal["idView"]
     idUser: Animal["idUser"]
 }

@@ -19,17 +19,12 @@ router.get('/users', authMiddleware, (req, res) => byAllControler.handle(req, re
 
 router.get('/user', authMiddleware, (req, res) => byIdControler.handle(req, res));;
 
-
 router.put('/update', authMiddleware, (req, res) => updateControler.handle(req, res));
 
 router.delete('/delete', authMiddleware, (req, res) => deleteControler.handle(req, res));
 
-router.post('/create', async (req, res) => {
-    await createControler.handle(req, res);
-});
+router.post('/create', async (req, res) => await createControler.handle(req, res));
 
-router.post('/login', async (req, res) => {
-    await loginControler.handle(req, res);
-});
+router.post('/login', async (req, res) => await loginControler.handle(req, res));
 
 export default router
