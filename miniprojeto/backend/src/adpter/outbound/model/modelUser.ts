@@ -6,8 +6,8 @@ interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 class UserModel extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: number;
   public name!: string;
-  public password!: string;
   public email!: string;
+  public password!: string;
   public admin!: boolean;
 }
 
@@ -24,11 +24,11 @@ UserModel.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
     },

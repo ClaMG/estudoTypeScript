@@ -1,22 +1,19 @@
 import {IUpdateRequest} from '../../../core/port/interfaceUserCase.js'
 
 export class UpdateUserDTO {
-    public readonly id: number;
     public readonly idUser: number;
+    public readonly id: number;
     public readonly name: string;
     public readonly email: string;
-    public readonly password: string;
+    public readonly password?: string;
     public readonly admin?: boolean;
 
-    constructor({id, idUser, name, email, password, admin }: IUpdateRequest) {
+    constructor({ idUser, id, name, email, password, admin }: IUpdateRequest) {
         if (idUser === undefined) {
             throw new Error("O seu ID de usuário é obrigatório para a atualização.");
         }
         if (id === undefined) {
             throw new Error("O ID do usuário é obrigatório para a atualização.");
-        }
-        if (password === undefined) {
-            throw new Error("A senha do usuário é obrigatório para a atualização.");
         }
         this.id = id;
         this.idUser = idUser;

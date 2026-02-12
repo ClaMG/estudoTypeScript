@@ -9,7 +9,10 @@ export class ControllerLogin {
         try {
             const userDTO = new LoginUserDTO(req.body);
             const result = await this.useCase.execute(userDTO);
-            return res.status(201).json(result);
+            return res.status(201).json({
+                message: "Usuário logado com sucesso!",
+                data: result 
+            });
         } catch (error: any) {
             return res.status(400).json({ error: error.message });
         }

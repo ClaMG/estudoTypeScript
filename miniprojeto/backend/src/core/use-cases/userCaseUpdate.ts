@@ -6,46 +6,53 @@ import {validateEmail} from '../../utils/validators/validateEmail.js'
 export class UpdateUserCase{
     constructor(private updateUserRepository: IUserRepository) {}
 
-    async execute({idUser, id, name, password, email, admin}:IUpdateRequest): Promise<void> {
+    async execute({idUser, id, name, email, password, admin}:IUpdateRequest): Promise<void> {
         if(idUser == null ||id== null || name == "" || email == ""){
             throw new Error("Preencha todos os campos")
         }
 
+
         let adminStatus: boolean = false
         let passwordEnd: string = password || ""
         
+        //Usuario que esta editando
         const idExistsUpdated = await this.updateUserRepository.findById(idUser)
 
+        //Existe?
         if(!idExistsUpdated){
             throw new Error("Não conseguimos indetificar o seu usuario")
         }
 
+        //Usuario que vai ser editado
         const idExists = await this.updateUserRepository.findById(id)
 
+        //Existe?
         if(!idExists || !idExists.password){
             throw new Error("Usuario para atualizar não existe")
         }
 
         if(!idExistsUpdated.admin){
-            if(idUser != id){
+            //Comum
+            if(idUser != id){//user diferente 
                 throw new Error("Você não pode alterar outros usuários")
             }
-            if(password == "" || passwordEnd == ""){
+            if(password == "" || passwordEnd == ""){//password vazia
                 throw new Error("Sua senha é obrigatória para atualizar os dados")
             }
+            if(admin != undefined){//se informar o adm
+                throw new Error("Você não é admin, não pode alterar o status de adiministrador")
+            }
         }else{
-            if (idUser != id){
-                if(password != "" || passwordEnd != ""){
-                    throw new Error("Você não pode alterar a senha de outros usuários")
-                }else{
-                    passwordEnd = idExists.password
-                }
-            }else{
-                if(password == "" || passwordEnd == ""){
-                    throw new Error("Sua senha é obrigatória para atualizar os dados")
+            //Adm
+            if (idUser != id && passwordEnd != "" ){//user diferente
+                    throw new Error("Você não pode alterar a senha de outros usuários(adm)")
+            }
+            if(idUser == id){//si mesmo
+                if(password == "" || passwordEnd == ""){//password vazia
+                    throw new Error("Sua senha é obrigatória para atualizar os dados(adm)")
                 }
             }
-            if(admin != undefined){
+            if(admin != undefined){//se informar o adm
                 adminStatus= admin
             }
         }

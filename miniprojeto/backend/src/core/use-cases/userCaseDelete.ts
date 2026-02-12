@@ -22,11 +22,11 @@ export class DeleteUserCase{
             throw new Error("Nome de usuario não existe")
         }
 
-        if(!idExists.admin && idUser != userExists.id){
+        if(!idExists.admin && idUser != userExists.id){//user comum tentando deletar outro user
             throw new Error("Você não é admin, não pode deletar outros usuarios")
         }
         
-        if(idExists.admin && idUser == userExists.id){
+        if(idExists.admin && idUser == userExists.id){//adm tentando deletar si mesmo
             throw new Error("Usuario ativo no momento")
         }
 

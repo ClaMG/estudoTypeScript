@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { Sequelize, Dialect } from 'sequelize';
 
-//Pegamos o dialeto do .env e forçamos o tipo Dialect
+//Pegamos o .env e forçamos o tipo Dialect
 const dbDialect = (process.env.DB_DIALECT) as Dialect;
 
 //Instanciamos a conexão

@@ -4,7 +4,7 @@ import {IByAllRequest} from '../port/interfaceUserCase.js'
 export class ByAllUserCase{
     constructor(private byAllUserRepository: IUserRepository) {}
 
-    async execute({idUser}: IByAllRequest): Promise<User> {
+    async execute({idUser}: IByAllRequest): Promise<User[]> {
         if(idUser == null){
             throw new Error("Não conseguimos indetificar o seu usuario")
         }
@@ -18,9 +18,12 @@ export class ByAllUserCase{
         if(!idExists.admin){
             throw new Error("Você não é admin, não pode visualizar outros usuarios")
         }
+          
+
+        const usersAll = await this.byAllUserRepository.seeAll()
 
         
 
-        return idExists
+        return usersAll
     } 
 }

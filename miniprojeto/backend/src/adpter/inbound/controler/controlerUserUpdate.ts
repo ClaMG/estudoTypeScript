@@ -9,7 +9,10 @@ export class ControllerUpdate {
         try {
             const userDTO = new UpdateUserDTO(req.body);
             const result = await this.useCase.execute(userDTO);
-            return res.status(201).json(result);
+            return res.status(201).json({
+                message: "Usuário atualizado com sucesso!",
+                data: result 
+            });
         } catch (error: any) {
             return res.status(400).json({ error: error.message });
         }

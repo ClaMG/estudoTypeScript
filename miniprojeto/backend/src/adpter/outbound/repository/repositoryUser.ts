@@ -31,7 +31,12 @@ export class UserRepositories implements IUserRepository{
             raw: true
         })as any
         if (!userFound) return null;
-        return new User(userFound.name, userFound.password, userFound.email, userFound.admin, userFound.id);
+        return new User(
+            userFound.name, 
+            userFound.email, 
+            userFound.password, 
+            userFound.admin, 
+            userFound.id);
     
     }
 
@@ -41,7 +46,12 @@ export class UserRepositories implements IUserRepository{
             raw: true
         })as any
         if (!userFound) return null;
-        return new User(userFound.name, userFound.password, userFound.email, userFound.admin, userFound.id);
+        return new User(
+            userFound.name, 
+            userFound.email, 
+            userFound.password, 
+            userFound.admin, 
+            userFound.id);
     
     }
 
@@ -52,7 +62,12 @@ export class UserRepositories implements IUserRepository{
         })as any
 
         if (!userFound) return null;
-        return new User(userFound.name, userFound.password, userFound.email, userFound.admin, userFound.id);
+        return new User(
+            userFound.name, 
+            userFound.email, 
+            userFound.password, 
+            userFound.admin, 
+            userFound.id);
     }
 
     async delete(id: User['id']): Promise<void> {
@@ -61,9 +76,18 @@ export class UserRepositories implements IUserRepository{
         });
     }
 
-    async seeAll(): Promise<string> {
-        const users = await this.userModel.findAll({ raw: true });
-        return JSON.stringify(users);
+    async seeAll(): Promise<User[]> {
+        const userFound = await this.userModel.findAll({ 
+            raw: true,
+            order: [['id', 'ASC']]
+         }) as any[]
+        return userFound.map(u => new User(
+        u.name, 
+        u.email, 
+        u.password, 
+        u.admin, 
+        u.id
+    ));
     }
 
 }

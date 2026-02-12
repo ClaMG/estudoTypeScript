@@ -7,7 +7,7 @@ import MailProvider from '../../utils/to_send/toSendEmail.js'
 import {validateEmail} from '../../utils/validators/validateEmail.js'
 export class CreateUserCase{
     constructor(private saveUserRepository: IUserRepository) {}
-    async execute({idUser, name, password, email, admin}: ICreateRequest): Promise<void> {
+    async execute({idUser, name, email, password, admin}: ICreateRequest): Promise<void> {
         if(name == "" || email == ""){
             throw new Error("Preencha todos os campos")
         }
@@ -16,23 +16,24 @@ export class CreateUserCase{
         let sendEmailStatus: boolean = false
         let passwordEnd: string = password || ""
         
-        if(idUser != null){
+        if(idUser != null){//mandou o id
             const idExists = await this.saveUserRepository.findById(idUser)
 
             if(!idExists){
                 throw new Error("Não conseguimos indetificar o seu usuario")
             }
 
+            //se for adm
             if(idExists.admin){
                 passwordEnd = generateRandomPassword(8)
                 sendEmailStatus= true
-                if(admin != undefined){
+                if(admin != undefined){//colocar status de adm
                     adminStatus= admin
                 }
             }
         }
 
-        if(password == "" || passwordEnd == ""){
+        if(passwordEnd == ""){//se for user comum e não mandou a senha
             throw new Error("Preencha todos os campos")
         }
 

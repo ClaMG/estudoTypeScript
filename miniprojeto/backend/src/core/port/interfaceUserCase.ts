@@ -3,8 +3,8 @@ import {User} from '../entities/entitiesUser'
 export interface ICreateRequest {
     idUser?: User["id"]
     name: string
-    password?: string  
     email: string 
+    password?: string  
     admin?: boolean
 }
 
@@ -12,8 +12,8 @@ export interface IUpdateRequest {
     idUser: User["id"]
     id:User["id"]
     name: string
-    password?: string 
     email: string
+    password?: string 
     admin?: boolean
 }
 
@@ -29,6 +29,7 @@ export interface ILoginRequest {
 
 export interface IByIdRequest {
     idUser:User["id"]
+    name: string
 }
 
 export interface IByAllRequest {
