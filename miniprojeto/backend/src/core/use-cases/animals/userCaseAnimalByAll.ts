@@ -2,12 +2,13 @@ import {IAnimalRepository} from '../../port/interfaceRepositoryAnimals.js'
 import { IByAllAnimalRequest } from '../../port/interfaceUserCaseAnimals.js'
 import { IUserRepository } from '../../port/interfaceRepository.js'
 import {Animal} from '../../entities/entitiesAnimals.js'
+import { NotFoundError} from '../../../utils/erros/erros.js'
 
 export class ByAllAnimalUserCase{
     constructor(private byAllAnimalRepository: IAnimalRepository, private byIdUserRepository:IUserRepository) {}
     async execute({idUser, idView}: IByAllAnimalRequest): Promise<Animal[]> {
         if( idUser == null){
-            throw new Error("Usuario não informado")
+            throw new NotFoundError("Usuario não informado")
         }
 
         let idSend: number = idUser
@@ -15,7 +16,7 @@ export class ByAllAnimalUserCase{
         const idUserExists = await this.byIdUserRepository.findById(idUser)
 
         if(!idUserExists){
-            throw new Error("Não conseguimos localizar o seu usuario")
+            throw new NotFoundError("Não conseguimos localizar o seu usuario")
         }
 
         if(idUserExists.admin){
@@ -24,7 +25,7 @@ export class ByAllAnimalUserCase{
             }
         }else{
             if(idView != null || idView != undefined && idView != idUser){
-                throw new Error("Você só pode visualizar o seu usuario")
+                throw new NotFoundError("Você só pode visualizar o seu usuario")
             }
         }
 

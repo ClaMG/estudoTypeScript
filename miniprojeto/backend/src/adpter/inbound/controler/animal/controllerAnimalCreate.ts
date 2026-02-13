@@ -1,6 +1,7 @@
 import {CreateAnimalDTO} from '../../dto/animal/dtoAnimalCreate.js'
 import {Request, Response } from 'express';
 import {CreateAnimalUserCase} from '../../../../core/use-cases/animals/userCaseAnimalCreate.js'
+import {AppError} from '../../../../utils/erros/erros.js'
 
 export class ControllerCreateAnimal {
     constructor(private animalCase: CreateAnimalUserCase) {}
@@ -21,7 +22,20 @@ export class ControllerCreateAnimal {
                 data: result 
             });
         } catch (error: any) {
-            return res.status(400).json({ error: error.message });
+            //Erros da logica
+            if (error instanceof AppError) {
+                return res.status(error.statusCode).json({
+                    status: 'error',
+                    message: error.message
+                });
+            }
+
+            //Erro inesperado 
+            console.error(error);
+            return res.status(500).json({
+                status: 'error',
+                message: 'Internal server error'
+            });
         }
     }
 }

@@ -1,6 +1,7 @@
 import {ByIdUserDTO} from '../dto/dtoUserById.js'
 import { Request, Response } from 'express'
 import {ByIdUserCase} from '../../../core/use-cases/userCaseById.js'
+import {AppError} from '../../../utils/erros/erros.js'
 
 export class ControllerById {
     constructor(private useCase: ByIdUserCase) {}
@@ -11,9 +12,22 @@ export class ControllerById {
             const { user } = req.body
             const userDTO = new ByIdUserDTO({ idUser: idDoToken, user: user  })
             const result = await this.useCase.execute(userDTO)
-            return res.status(201).json(result)
+            return res.status(200).json(result)
         } catch (error: any) {
-            return res.status(400).json({ error: error.message })
+            //Erros da logica
+            if (error instanceof AppError) {
+                return res.status(error.statusCode).json({
+                    status: 'error',
+                    message: error.message
+                });
+            }
+
+            //Erro inesperado 
+            console.error(error);
+            return res.status(500).json({
+                status: 'error',
+                message: 'Internal server error'
+            });
         }
     }
 }

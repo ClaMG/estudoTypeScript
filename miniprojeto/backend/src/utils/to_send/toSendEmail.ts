@@ -9,7 +9,7 @@ class MailProvider {
     }
 
     
-    async sendEmail(emailRecipient: string, nameUser: string, passwordUser: string, nameUserAdm: string): Promise<boolean> {
+    async sendEmail(emailRecipient: string, nameUser: string, user: string, passwordUser: string, nameUserAdm: string): Promise<boolean> {
         try {
             const info = await this.transporter.sendMail({
                 // Usamos o operador '!' ou fallback para garantir que o user do config não é undefined
@@ -20,12 +20,12 @@ class MailProvider {
                 html: `
                     <div style="font-family: sans-serif; color: #333; max-width: 600px; border: 1px solid #ddd; padding: 20px;">
                         <h1 style="color: #2c3e50;">Olá, ${nameUser}!</h1>
-                        <p>O administrador ${nameUserAdm} atualizou o seu usuario</p>
+                        <p>O usuario ${nameUserAdm} atualizou o seu usuario</p>
                         
                         <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px dashed #27ae60; margin: 20px 0;">
                             <p style="margin: 0; font-size: 14px;">Estes são seus dados de acesso:</p>
-                            <p style="margin: 5px 0;"><strong>User:</strong> ${nameUser}</p>
-                            <p style="margin: 5px 0;"><strong>Senha:</strong> <span style="font-family: monospace; font-size: 18px; color: #e74c3c;">${passwordUser}</span></p>
+                            <p style="margin: 5px 0;"><strong>User: </strong> ${user}</p>
+                            <p style="margin: 5px 0;"><strong>Senha: </strong> <span style="font-family: monospace; font-size: 18px; color: #e74c3c;">${passwordUser}</span></p>
                         </div>
 
                         <p style="font-size: 12px; color: #7f8c8d;">Dica: Recomendamos alterar sua senha no primeiro acesso.</p>

@@ -1,6 +1,7 @@
 import {CreateUserDTO} from '../dto/dtoUserCreate.js'
 import { Request, Response } from 'express';
 import {CreateUserCase} from '../../../core/use-cases/userCaseCreate.js'
+import {AppError} from '../../../utils/erros/erros.js'
 
 export class ControllerCreate {
     constructor(private useCase: CreateUserCase) {}
@@ -9,12 +10,25 @@ export class ControllerCreate {
         try {
             const userDTO = new CreateUserDTO(req.body);
             const result = await this.useCase.execute(userDTO);
-            return res.status(201).json({
+            return res.status(200).json({
                 message: "Usuário cadastrado com sucesso!",
                 data: result 
             });
         } catch (error: any) {
-            return res.status(400).json({ error: error.message });
+            //Erros da logica
+            if (error instanceof AppError) {
+                return res.status(error.statusCode).json({
+                    status: 'error',
+                    message: error.message
+                });
+            }
+
+            //Erro inesperado 
+            console.error(error);
+            return res.status(500).json({
+                status: 'error',
+                message: 'Internal server error'
+            });
         }
     }
 }

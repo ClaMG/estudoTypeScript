@@ -1,6 +1,7 @@
 import {UpdateAnimalDTO} from '../../dto/animal/dtoAnimalUpdate.js'
 import {Request, Response } from 'express';
 import {UpdateAnimalUserCase} from '../../../../core/use-cases/animals/userCaseAnimalUpdate.js'
+import {AppError} from '../../../../utils/erros/erros.js'
 
 export class ControllerUpdateAnimal {
     constructor(private animalCase: UpdateAnimalUserCase) {}
@@ -22,7 +23,20 @@ export class ControllerUpdateAnimal {
                 data: result 
             });
         } catch (error: any) {
-            return res.status(400).json({ error: error.message });
+            //Erros da logica
+            if (error instanceof AppError) {
+                return res.status(error.statusCode).json({
+                    status: 'error',
+                    message: error.message
+                });
+            }
+
+            //Erro inesperado 
+            console.error(error);
+            return res.status(500).json({
+                status: 'error',
+                message: 'Internal server error'
+            });
         }
     }
 }
