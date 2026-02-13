@@ -18,7 +18,7 @@ export class ControllerUpdateAnimal {
                 gender: gender });
             const result = await this.animalCase.execute(animalDTO);
             return res.status(201).json({
-                message: "Animal cadastrado com sucesso!",
+                message: "Animal atualizado com sucesso!",
                 data: result 
             });
         } catch (error: any) {

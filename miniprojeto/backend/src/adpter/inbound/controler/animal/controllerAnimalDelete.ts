@@ -16,7 +16,7 @@ export class ControllerDeleteAnimal {
                  });
             const result = await this.animalCase.execute(animalDTO);
             return res.status(201).json({
-                message: "Animal cadastrado com sucesso!",
+                message: "Animal deletado com sucesso!",
                 data: result 
             });
         } catch (error: any) {

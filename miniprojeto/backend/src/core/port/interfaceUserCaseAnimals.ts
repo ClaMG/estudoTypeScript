@@ -3,18 +3,18 @@ import {Animal} from '../entities/entitiesAnimals.js'
 export interface ICreateAnimalRequest {
     idUser: Animal["idUser"]
     name: string
-    age: number  
     species: string 
     gender: string 
+    age: number  
 }
 
 export interface IUpdateAnimalRequest {
-    id: Animal["id"]
     idUser: Animal["idUser"]
     name: string
-    age: number  
     species: string 
     gender: string 
+    age: number  
+    id: Animal["id"]
 }
 
 export interface IDeleteAnimalRequest {

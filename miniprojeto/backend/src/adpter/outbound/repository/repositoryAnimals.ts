@@ -9,9 +9,9 @@ export class AnimalRepositories implements IAnimalRepository{
         await this.animalModel.create({
             idUser: animal.idUser,
             name: animal.name,
-            age: animal.age,
             species: animal.species,
-            gender: animal.gender
+            gender: animal.gender,
+            age: animal.age
         });
     }
 
@@ -19,9 +19,9 @@ export class AnimalRepositories implements IAnimalRepository{
         const [affectedRows] = await this.animalModel.update({
             idUser: animal.idUser,
             name: animal.name,
-            age: animal.age,
             species: animal.species,
-            gender: animal.gender
+            gender: animal.gender,
+            age: animal.age
         }, {
             where: { id: animal.id }
         });
@@ -42,18 +42,18 @@ export class AnimalRepositories implements IAnimalRepository{
         if (!animalFound) return null;
 
         return new Animal(
-            animalFound.id,
             animalFound.idUser,
             animalFound.name,
-            animalFound.age,
             animalFound.species,
-            animalFound.gender
+            animalFound.gender,
+            animalFound.age,
+            animalFound.id,
         );
     }
-    async findByAnimalId(idAnimal: Animal['id']): Promise<Animal | null> {
+    async findByAnimalId(id: Animal['id']): Promise<Animal | null> {
         const animalFound = await this.animalModel.findOne({
             where: {
-                id: idAnimal
+                id: id
             },
             raw: true
         }) as any
@@ -61,33 +61,34 @@ export class AnimalRepositories implements IAnimalRepository{
         if (!animalFound) return null;
 
         return new Animal(
-            animalFound.id,
             animalFound.idUser,
             animalFound.name,
-            animalFound.age,
             animalFound.species,
-            animalFound.gender
+            animalFound.gender,
+            animalFound.age,
+            animalFound.id,
         );
     }
 
-    async delete(idAnimal: Animal['id']): Promise<void> {
+    async delete(id: Animal['id']): Promise<void> {
         await this.animalModel.destroy({
-            where: { id: idAnimal }
+            where: { id: id }
         });
     }
+
     async seeAllAnimal(idUser: Animal['idUser']): Promise<Animal[]> {
         const animalFound = await this.animalModel.findAll({ 
                     raw: true,
-                    order: [['id', 'ASC']],
-                    where: { idUser: idUser }
-                 }) as any[]
+                    where: { idUser: Number(idUser) },
+                    order: [['id', 'ASC']]
+                 }) as Array<any>
                 return animalFound.map(a => new Animal(
-                a.id,
-                a.idUser,
-                a.name, 
-                a.age, 
-                a.species, 
-                a.gender
+                    a.idUser,
+                    a.name, 
+                    a.species, 
+                    a.gender,
+                    a.age, 
+                    a.id
             ));
     }
 

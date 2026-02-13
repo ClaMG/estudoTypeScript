@@ -11,13 +11,10 @@ export class ControllerByAllAnimal {
             const { idView } = req.body
             const animalDTO = new ByAllAnimalDTO({ 
                 idUser:idDoToken, 
-                idView: idView, 
+                idView: idView || null, 
                 });
             const result = await this.animalCase.execute(animalDTO);
-            return res.status(201).json({
-                message: "Animal cadastrado com sucesso!",
-                data: result 
-            });
+            return res.status(201).json( result );
         } catch (error: any) {
             return res.status(400).json({ error: error.message });
         }
