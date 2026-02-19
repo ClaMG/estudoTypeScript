@@ -12,23 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android">
         <activity
-            android:name=".presentation.ui.LoginActivity"
+            android:name=".View.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.CreateActivity"
+            android:name=".View.CreateActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.HomeActivity"
+            android:name=".View.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name=".View.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
