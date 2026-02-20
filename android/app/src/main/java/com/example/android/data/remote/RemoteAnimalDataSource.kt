@@ -28,18 +28,20 @@ class RemoteAnimalDataSource (private val api: ApiAnimal) {
             throw Exception(errorMsg)
         }
     }
+
     //By All
-    suspend fun byAllAnimalDataSource(token: String, request: AnimalByAllRequest) : AnimalByAllResponse {
+    suspend fun byAllAnimalDataSource(token: String, request: AnimalByAllRequest) : List<AnimalByAllResponse> {
         val response = api.byAllAnimalApi(formatToken(token), request) //faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
-            return response.body() ?: throw Exception("Resposta vazia")
+            return response.body() ?: emptyList()
 
         }else{
             val errorMsg = ErrorClass().parseError(response)
             throw Exception(errorMsg)
         }
     }
+
     //Delete
     suspend fun deleteAnimalDataSource(token: String, request: AnimalDeleteRequest) : AnimalDeleteResponse  {
         val response = api.deleteAnimalApi(formatToken(token), request) //faz a parte logica com a api (mandar e receber)
@@ -52,6 +54,7 @@ class RemoteAnimalDataSource (private val api: ApiAnimal) {
             throw Exception(errorMsg)
         }
     }
+
     //Update
     suspend fun updateAnimalDataSource(token: String, request: AnimalUpdateRequest ) : AnimalUpdateResponse  {
         val response = api.updateAnimalApi(formatToken(token), request) //faz a parte logica com a api (mandar e receber)

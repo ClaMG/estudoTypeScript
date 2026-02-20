@@ -30,7 +30,7 @@ interface ApiAnimal {
     suspend fun byAllAnimalApi(
         @Header("Authorization") token: String,
         @Body request: AnimalByAllRequest
-    ): Response<AnimalByAllResponse>
+    ): Response<List<AnimalByAllResponse>>
 
     //Delete
     @HTTP(method = "DELETE", path = "animal/delete", hasBody = true)

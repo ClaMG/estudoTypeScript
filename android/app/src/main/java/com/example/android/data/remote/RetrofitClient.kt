@@ -1,4 +1,4 @@
-package com.example.android.di
+package com.example.android.data.remote
 
 import com.example.android.constants.Constants
 import com.example.android.data.remote.api.ApiUser

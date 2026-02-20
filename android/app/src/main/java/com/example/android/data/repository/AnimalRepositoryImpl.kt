@@ -27,21 +27,22 @@ class AnimalRepositoryImpl (private val remoteAnimalDataSource: RemoteAnimalData
     }
 
     //By All
-    override suspend fun byAllAnimal(token: String, idView: Int? ): Animal {
+    override suspend fun byAllAnimal(token: String, idView: Int? ): List<Animal> {
         //Dto envia
         val request = AnimalByAllRequest(idView = idView)
         // DataSource
         val response = remoteAnimalDataSource.byAllAnimalDataSource(token, request)
 
         // Model de resposta
-        return Animal(
-            id = response.id,
-            idUser = response.idUser,
-            name = response.name,
-            age = response.age,
-            species = response.species,
-            gender = response.gender
-        )
+        return response.map { dto ->
+            Animal(
+            id = dto.id,
+            idUser = dto.idUser,
+            name = dto.name,
+            age = dto.age,
+            species = dto.species,
+            gender = dto.gender
+        )}
     }
 
     //Delete
