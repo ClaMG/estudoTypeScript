@@ -6,15 +6,15 @@ import com.example.android.dominio.model.User
 
 interface UserRepositoryInterface {
     //Create
-    suspend fun create(user: String, name: String, email: String, password: String): Mensage;
+    suspend fun createUser(user: String, name: String, email: String, password: String): Mensage;
     //Login
-    suspend fun login(user: String, password: String): Login;
+    suspend fun loginUser(user: String, password: String): Login;
     //By All
-    suspend fun byAll(token: String): List<User>;
+    suspend fun byAllUser(token: String): List<User>;
     //Delete
-    suspend fun delete(token: String, user: String ): Mensage;
+    suspend fun deleteUser(token: String, user: String ): Mensage;
     //Update
-    suspend fun update(token: String, id: Int, user: String, name: String, email: String, password: String): Mensage;
+    suspend fun updateUser(token: String, id: Int, user: String, name: String, email: String, password: String?, admin: Boolean?): Mensage;
     //By Id
-    suspend fun byId(token: String, user: String): User;
+    suspend fun byIdUser(token: String, user: String): User;
 }
