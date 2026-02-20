@@ -35,14 +35,14 @@ interface ApiUserInterface {
 
     //Get All
     @GET("user/users")
-    suspend fun byAllUser(
+    suspend fun byAllUserApi(
         @Header("Authorization") token: String
     ): Response<List<UserByAllResponse>>
 
 
     //Delete
     @HTTP(method = "DELETE", path = "user/delete", hasBody = true)
-    suspend fun deleteUser(
+    suspend fun deleteUserApi(
         @Header("Authorization") token: String,
         @Body request: UserDeleteRequest
     ): Response<UserDeleteResponse>
@@ -50,14 +50,14 @@ interface ApiUserInterface {
 
     //Update
     @PUT("user/update")
-    suspend fun updateUser(
+    suspend fun updateUserApi(
         @Header("Authorization") token: String,
         @Body request: UserUpdateRequest
     ): Response<UserUpdateResponse>
 
     //Get By Id
     @HTTP(method = "GET", path = "user/user", hasBody = true)
-    suspend fun byIdUser(
+    suspend fun byIdUserApi(
         @Header("Authorization") token: String,
         @Body request: UserByIdRequest
     ): Response<UserByIdResponse>
