@@ -5,6 +5,7 @@ package com.example.android.data.remote.DTO.user
 
 //Recebe
 data class UserByAllResponse(
+    val id: Int,
     val user: String,
     val name: String,
     val email: String,

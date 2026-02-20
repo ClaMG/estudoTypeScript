@@ -20,7 +20,7 @@ class RemoteDataSource(private val api: ApiUserInterface) {
     private fun formatToken(token: String) = "Bearer $token"
 
     // Create
-    suspend fun registerUser(request: UserCreateRequest) : UserCreateResponse {
+    suspend fun registerUserDataSource(request: UserCreateRequest) : UserCreateResponse {
         val response = api.registerUserApi(request) //faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
@@ -33,7 +33,7 @@ class RemoteDataSource(private val api: ApiUserInterface) {
     }
 
     // Login
-    suspend fun loginUser(request: UserLoginRequest) : UserLoginResponse {
+    suspend fun loginUserDataSource(request: UserLoginRequest) : UserLoginResponse {
         val response = api.loginUserApi(request)//faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
@@ -46,7 +46,7 @@ class RemoteDataSource(private val api: ApiUserInterface) {
     }
 
     //Get All
-    suspend fun byAllUser(token: String) : List<UserByAllResponse> {
+    suspend fun byAllUserDataSource(token: String) : List<UserByAllResponse> {
         val response = api.byAllUserApi(formatToken(token))//faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
@@ -59,7 +59,7 @@ class RemoteDataSource(private val api: ApiUserInterface) {
     }
 
     //Delete
-    suspend fun deleteUser(token: String, request: UserDeleteRequest) : UserDeleteResponse {
+    suspend fun deleteUserDataSource(token: String, request: UserDeleteRequest) : UserDeleteResponse {
         val response = api.deleteUserApi(formatToken(token), request)//faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
@@ -72,7 +72,7 @@ class RemoteDataSource(private val api: ApiUserInterface) {
     }
 
     //Update
-    suspend fun updateUser(token: String, request: UserUpdateRequest) : UserUpdateResponse {
+    suspend fun updateUserDataSource(token: String, request: UserUpdateRequest) : UserUpdateResponse {
         val response = api.updateUserApi(formatToken(token), request)//faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
@@ -83,9 +83,9 @@ class RemoteDataSource(private val api: ApiUserInterface) {
             throw Exception(errorMsg)
         }
     }
-    
+
     //Get By id
-    suspend fun byIdUser(token: String, request: UserByIdRequest) : UserByIdResponse {
+    suspend fun byIdUserDataSource(token: String, request: UserByIdRequest) : UserByIdResponse {
         val response = api.byIdUserApi(formatToken(token), request)//faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
