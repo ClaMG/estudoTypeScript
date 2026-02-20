@@ -1,7 +1,6 @@
 package com.example.android.dominio.util
 
-import android.util.Patterns
-
 fun String.isValidEmail(): Boolean {
-    return this.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$".toRegex()
+    return this.isNotBlank() && this.matches(emailRegex)
 }

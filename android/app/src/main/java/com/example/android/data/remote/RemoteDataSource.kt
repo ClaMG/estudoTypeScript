@@ -11,10 +11,10 @@ import com.example.android.data.remote.DTO.user.UserLoginRequest
 import com.example.android.data.remote.DTO.user.UserLoginResponse
 import com.example.android.data.remote.DTO.user.UserUpdateRequest
 import com.example.android.data.remote.DTO.user.UserUpdateResponse
-import com.example.android.data.remote.api.ApiUserInterface
+import com.example.android.data.remote.api.ApiUser
 import com.example.android.data.remote.erro.ErrorClass
 
-class RemoteDataSource(private val api: ApiUserInterface) {
+class RemoteDataSource(private val api: ApiUser) {
 
     //formato token
     private fun formatToken(token: String) = "Bearer $token"

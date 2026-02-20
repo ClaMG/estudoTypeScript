@@ -20,7 +20,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 
 //envia e recebe os dados usando as rotas
-interface ApiUserInterface {
+interface ApiUser {
     //Create
     @POST("user/create")
     suspend fun registerUserApi(

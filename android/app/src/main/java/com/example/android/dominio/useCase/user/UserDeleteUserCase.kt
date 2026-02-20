@@ -1,4 +1,4 @@
-package com.example.android.dominio.usecase
+package com.example.android.dominio.useCase.user
 
 import com.example.android.dominio.model.Mensage
 import com.example.android.dominio.repository.UserRepositoryInterface
