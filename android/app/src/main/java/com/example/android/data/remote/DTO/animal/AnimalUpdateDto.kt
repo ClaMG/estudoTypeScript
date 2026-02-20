@@ -10,7 +10,7 @@ data class AnimalUpdateRequest(
     @SerializedName("name") val name: String,
     @SerializedName("age") val age: Int,
     @SerializedName("species") val species: String,
-    @SerializedName("gender") val gender: Int
+    @SerializedName("gender") val gender: String
 )
 
 //Recebe

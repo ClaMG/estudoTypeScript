@@ -16,5 +16,5 @@ data class AnimalByAllResponse(
     val name: String,
     val age: Int,
     val species: String,
-    val gender: Int
+    val gender: String
 )
