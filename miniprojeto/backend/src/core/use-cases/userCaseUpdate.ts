@@ -40,11 +40,11 @@ export class UpdateUserCase{
             if(idUser != id){//user diferente 
                 throw new NotFoundError("Você não pode alterar outros usuários")
             }
-            if(password == "" || passwordEnd == ""){//password vazia
+            if(password == null || passwordEnd == ""){//password vazia
                 passwordEnd = generateRandomPassword(8)
                 emailSendStatus = true
             }
-            if(admin != undefined){//se informar o adm
+            if(admin != undefined || admin != null){//se informar o adm
                 throw new NotFoundError("Você não é admin, não pode alterar o status de adiministrador")
             }
         }else{
@@ -58,11 +58,11 @@ export class UpdateUserCase{
                 }
             }
             if(idUser == id){//si mesmo
-                if(password == "" || passwordEnd == ""){//password vazia
+                if(password == null || passwordEnd == ""){//password vazia
                     throw new NotFoundError("Sua senha é obrigatória para atualizar os dados")
                 }
             }
-            if(admin != undefined){//se informar o status adm
+            if(admin != undefined || admin != null){//se informar o status adm
                 adminStatus= admin
             }
         }

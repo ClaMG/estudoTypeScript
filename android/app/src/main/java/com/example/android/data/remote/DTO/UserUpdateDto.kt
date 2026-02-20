@@ -7,7 +7,7 @@ data class UserUpdateRequest(
     @SerializedName("user") val user: String,
     @SerializedName("name") val name: String,
     @SerializedName("email") val email: String,
-    @SerializedName("password") val password: String? = "",
+    @SerializedName("password") val password: String? = null,
     @SerializedName("admin") val admin: Boolean? = null
 )
 data class UserUpdateResponse(
