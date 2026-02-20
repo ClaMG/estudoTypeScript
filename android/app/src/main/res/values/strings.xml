@@ -14,8 +14,26 @@
     <string name="textInputEmail">Digite um email válido</string>
     <string name="textInputPassword">Digite uma senha</string>
     <string name="textInputPasswordRepeat">Repita a senha para confirmação</string>
+
     <string name="textLogin">Logar</string>
     <string name="textBackLogin">Não tem uma conta?</string>
     <string name="textForgetPassword">Esqueceu a senha?</string>
     <string name="textLinkForgetPassword">Recuperar</string>
+
+    <string name="error_empty_response">O servidor retornou uma resposta vazia.</string>
+    <string name="error_token_not_found">Token não localizado.</string>
+
+    <string name="error_id_pet_not_found">Id do pet não localizado.</string>
+    <string name="error_pet_name_required">Informe o nome do pet.</string>
+    <string name="error_pet_age_required">Informe a idade do pet.</string>
+    <string name="error_pet_species_required">Informe a especie do pet.</string>
+    <string name="error_pet_gender_required">Informe o gênero do pet.</string>
+
+    <string name="error_id_user_not_found">Id do usuario para editar não localizado.</string>
+    <string name="error_user_user_required">Informe o usuário.</string>
+    <string name="error_user_name_required">Informe o nome completo.</string>
+    <string name="error_user_email_required">Informe o email.</string>
+    <string name="error_user_email_format_required">Fomato incorreto de email, adicione @ e .com.</string>
+    <string name="error_user_password_required">Informe a senha.</string>
+
 </resources>
