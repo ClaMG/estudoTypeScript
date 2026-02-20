@@ -14,7 +14,7 @@ import com.example.android.data.remote.DTO.user.UserUpdateResponse
 import com.example.android.data.remote.api.ApiUser
 import com.example.android.data.remote.erro.ErrorClass
 
-class RemoteDataSource(private val api: ApiUser) {
+class RemoteUserDataSource(private val api: ApiUser) {
 
     //formato token
     private fun formatToken(token: String) = "Bearer $token"

@@ -19,7 +19,7 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
-//envia e recebe os dados usando as rotas
+//Usa as rotas
 interface ApiUser {
     //Create
     @POST("user/create")

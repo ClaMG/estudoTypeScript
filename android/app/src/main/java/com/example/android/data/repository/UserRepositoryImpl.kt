@@ -5,21 +5,21 @@ import com.example.android.data.remote.DTO.user.UserCreateRequest
 import com.example.android.data.remote.DTO.user.UserDeleteRequest
 import com.example.android.data.remote.DTO.user.UserLoginRequest
 import com.example.android.data.remote.DTO.user.UserUpdateRequest
-import com.example.android.data.remote.RemoteDataSource
+import com.example.android.data.remote.RemoteUserDataSource
 import com.example.android.dominio.model.Login
 import com.example.android.dominio.model.Mensage
 import com.example.android.dominio.model.User
 import com.example.android.dominio.repository.UserRepositoryInterface
 import kotlin.String
 
-class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource): UserRepositoryInterface {
+class UserRepositoryImpl (private val remoteUserDataSource: RemoteUserDataSource): UserRepositoryInterface {
 
     //Create
     override suspend fun createUser(user: String, name: String, email: String, password: String): Mensage {
         //Dto envia
         val request = UserCreateRequest(user = user, name = name, email = email, password = password)
         // DataSource
-        val response = remoteDataSource.registerUserDataSource(request)
+        val response = remoteUserDataSource.registerUserDataSource(request)
 
         // Model de resposta
         return Mensage(
@@ -33,7 +33,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource): UserR
         //Dto envia
         val request = UserLoginRequest(user = user, password = password)
         // DataSource
-        val response = remoteDataSource.loginUserDataSource(request)
+        val response = remoteUserDataSource.loginUserDataSource(request)
 
         // Model de resposta
         return Login(
@@ -45,7 +45,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource): UserR
     //By All
     override suspend fun byAllUser(token: String): List<User> {
         // DataSource
-        val response = remoteDataSource.byAllUserDataSource(token)
+        val response = remoteUserDataSource.byAllUserDataSource(token)
 
         // Model de resposta
         return response.map { dto ->
@@ -64,7 +64,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource): UserR
         //Dto envia
         val request = UserDeleteRequest(user = user)
         // DataSource
-        val response = remoteDataSource.deleteUserDataSource(token, request)
+        val response = remoteUserDataSource.deleteUserDataSource(token, request)
 
         // Model de resposta
         return Mensage(
@@ -78,7 +78,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource): UserR
         //Dto envia
         val request = UserUpdateRequest(id= id, user = user, name = name, email = email, password = password, admin= admin)
         // DataSource
-        val response = remoteDataSource.updateUserDataSource(token, request)
+        val response = remoteUserDataSource.updateUserDataSource(token, request)
 
         // Model de resposta
         return Mensage(
@@ -92,7 +92,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource): UserR
         //Dto envia
         val request = UserByIdRequest(user = user)
         // DataSource
-        val response = remoteDataSource.byIdUserDataSource(token, request)
+        val response = remoteUserDataSource.byIdUserDataSource(token, request)
 
         // Model de resposta
         return User(

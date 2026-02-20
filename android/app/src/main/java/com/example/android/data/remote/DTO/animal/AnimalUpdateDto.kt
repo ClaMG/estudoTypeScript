@@ -1,14 +1,16 @@
 package com.example.android.data.remote.DTO.animal
 
+import com.google.gson.annotations.SerializedName
+
 //formato de como ... da api
 
 //Envia
 data class AnimalUpdateRequest(
-    val id: Int,
-    val name: String,
-    val age: Int,
-    val species: String,
-    val gender: Int
+    @SerializedName("id") val id: Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("age") val age: Int,
+    @SerializedName("species") val species: String,
+    @SerializedName("gender") val gender: Int
 )
 
 //Recebe

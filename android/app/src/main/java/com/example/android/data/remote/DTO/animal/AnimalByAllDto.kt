@@ -1,10 +1,12 @@
 package com.example.android.data.remote.DTO.animal
 
+import com.google.gson.annotations.SerializedName
+
 //formato de como ... da api
 
 //Envia
 data class AnimalByAllRequest(
-    val idView: Int? = null
+    @SerializedName("idView") val idView: Int? = null
 )
 
 //Recebe

@@ -1,11 +1,13 @@
 package com.example.android.data.remote.DTO.animal
 
+import com.google.gson.annotations.SerializedName
+
 //formato de como ... da api
 
 //Envia
 data class AnimalDeleteRequest(
-    val id: Int,
-    val name: String
+    @SerializedName("id") val id: Int,
+    @SerializedName("name") val name: String
 )
 
 //Recebe
