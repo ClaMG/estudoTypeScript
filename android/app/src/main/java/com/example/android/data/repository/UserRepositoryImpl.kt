@@ -9,12 +9,13 @@ import com.example.android.data.remote.RemoteDataSource
 import com.example.android.dominio.model.Login
 import com.example.android.dominio.model.Mensage
 import com.example.android.dominio.model.User
+import com.example.android.dominio.repository.UserRepositoryInterface
 import kotlin.String
 
-class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource){
+class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource): UserRepositoryInterface {
 
     //Create
-    suspend fun create(user: String, name: String, email: String, password: String): Mensage {
+    override suspend fun create(user: String, name: String, email: String, password: String): Mensage {
         //Dto envia
         val request = UserCreateRequest(user = user, name = name, email = email, password = password)
         // DataSource
@@ -28,7 +29,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource){
     }
 
     //Login
-    suspend fun login(user: String, password: String): Login {
+    override suspend fun login(user: String, password: String): Login {
         //Dto envia
         val request = UserLoginRequest(user = user, password = password)
         // DataSource
@@ -42,7 +43,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource){
     }
 
     //By All
-    suspend fun byAll(token: String): List<User> {
+    override suspend fun byAll(token: String): List<User> {
         // DataSource
         val response = remoteDataSource.byAllUserDataSource(token)
 
@@ -59,7 +60,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource){
     }
 
     //Delete
-    suspend fun delete(token: String, user: String ): Mensage {
+    override suspend fun delete(token: String, user: String ): Mensage {
         //Dto envia
         val request = UserDeleteRequest(user = user)
         // DataSource
@@ -73,7 +74,7 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource){
     }
 
     //Update
-    suspend fun update(token: String, id: Int, user: String, name: String, email: String, password: String): Mensage {
+    override suspend fun update(token: String, id: Int, user: String, name: String, email: String, password: String): Mensage {
         //Dto envia
         val request = UserUpdateRequest(id= id, user = user, name = name, email = email, password = password)
         // DataSource
@@ -85,9 +86,9 @@ class UserRepositoryImpl (private val remoteDataSource: RemoteDataSource){
             data = response.data
         )
     }
-    
+
     //By Id
-    suspend fun byId(token: String, user: String): User {
+    override suspend fun byId(token: String, user: String): User {
         //Dto envia
         val request = UserByIdRequest(user = user)
         // DataSource
