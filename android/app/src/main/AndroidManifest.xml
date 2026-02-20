@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android">
         <activity
-            android:name=".View.LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".View.CreateActivity"
+            android:name=".ui.CreateActivity"
             android:exported="false" />
         <activity
-            android:name=".View.HomeActivity"
+            android:name=".ui.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".View.SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
