@@ -7,11 +7,11 @@ export class User{
     public admin?: boolean
 
     constructor(user: string, name: string, email: string, password: string, admin?: boolean, id?: number){
-        this.id= id
+        this.id = id
         this.user = user
         this.name = name
-        this.email =email
-        this.password= password
+        this.email = email
+        this.password = password
         this.admin = admin
     }
 }

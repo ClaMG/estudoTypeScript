@@ -1,7 +1,10 @@
-package com.example.android.data.remote.DTO
+package com.example.android.data.remote.DTO.user
 
 import com.google.gson.annotations.SerializedName
 
+//formato de como ... da api
+
+//Envia
 data class UserCreateRequest(
     @SerializedName("user") val user: String,
     @SerializedName("name") val name: String,
@@ -9,6 +12,7 @@ data class UserCreateRequest(
     @SerializedName("password") val password: String
 )
 
+//Recebe
 data class UserCreateResponse(
     val message: String,
     val data: Boolean
