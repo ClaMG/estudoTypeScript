@@ -8,7 +8,7 @@
     tools:context=".ui.user.update.UpdateActivity">
 
     <Button
-        android:id="@+id/btnRegister_create2"
+        android:id="@+id/btnUpdate"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="80dp"
@@ -31,7 +31,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister_create2"
+        app:layout_constraintBottom_toTopOf="@+id/btnUpdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView59"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="0"
@@ -56,7 +56,7 @@
                 app:srcCompat="@drawable/ic_user" />
 
             <EditText
-                android:id="@+id/txUser_create"
+                android:id="@+id/txUser_update"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginRight="15dp"
@@ -77,7 +77,7 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView5d"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="0"
@@ -86,7 +86,7 @@
                 app:srcCompat="@drawable/ic_user" />
 
             <EditText
-                android:id="@+id/txName_create"
+                android:id="@+id/txName_update"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginRight="15dp"
@@ -107,7 +107,7 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView5e"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="0"
@@ -116,7 +116,7 @@
                 app:srcCompat="@drawable/ic_email" />
 
             <EditText
-                android:id="@+id/txEmail_create"
+                android:id="@+id/txEmail_update"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginRight="15dp"
@@ -137,7 +137,7 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView5cx"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="0"
@@ -146,7 +146,7 @@
                 app:srcCompat="@drawable/ic_password" />
 
             <EditText
-                android:id="@+id/txPassword_create"
+                android:id="@+id/txPassword_update"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginRight="15dp"
@@ -167,7 +167,7 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView5f"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="0"
@@ -176,7 +176,7 @@
                 app:srcCompat="@drawable/ic_password" />
 
             <EditText
-                android:id="@+id/txPasswordRepeat_create"
+                android:id="@+id/txPasswordRepeat_update"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginRight="15dp"
@@ -217,7 +217,7 @@
                 android:textSize="23sp" />
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/swAdmin_update"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:layout_weight="0"
@@ -253,7 +253,7 @@
         app:srcCompat="@drawable/img_logo_straight" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnBack_update"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="36dp"

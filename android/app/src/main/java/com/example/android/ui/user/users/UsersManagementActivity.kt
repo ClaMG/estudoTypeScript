@@ -13,6 +13,7 @@ class UsersManagementActivity : AppCompatActivity() {
 
     private lateinit var txSearchBar_users: EditText
     private lateinit var btnSearch_users: ImageButton
+    private lateinit var btnBack_users: ImageButton
     private lateinit var rvUsers: RecyclerView
     private lateinit var llBtnAdd_users: View
 
@@ -23,11 +24,18 @@ class UsersManagementActivity : AppCompatActivity() {
 
         //Componentes
         txSearchBar_users = findViewById(R.id.txSearchBar_users)
+
         btnSearch_users = findViewById(R.id.btnSearch_users)
-        rvUsers = findViewById(R.id.rvUsers)
+        btnBack_users = findViewById(R.id.btnBack_users)
         llBtnAdd_users = findViewById(R.id.llBtnAdd_users)
 
+        rvUsers = findViewById(R.id.rvUsers)
+
         //Eventos
+        btnBack_users.setOnClickListener{
+
+        }
+
         btnSearch_users.setOnClickListener {
 
         }
