@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         //Eventos
         linkPassword_login.setOnClickListener {
-
+            //tela
         }
 
         linkCreate_login.setOnClickListener {

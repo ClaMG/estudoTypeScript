@@ -54,7 +54,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         btnGetPets_profile.setOnClickListener {
-
+            //tela
         }
 
         btnUpdate_profile.setOnClickListener {

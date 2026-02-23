@@ -1,5 +1,6 @@
 package com.example.android.ui.user.users
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -8,6 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.R
+import com.example.android.ui.user.profile.ProfileActivity
+import com.example.android.ui.user.update.UpdateActivity
 
 class UsersManagementActivity : AppCompatActivity() {
 
@@ -33,7 +36,8 @@ class UsersManagementActivity : AppCompatActivity() {
 
         //Eventos
         btnBack_users.setOnClickListener{
-
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
 
         btnSearch_users.setOnClickListener {

@@ -32,6 +32,18 @@
     <string name="textLogOutField">Sair da Conta</string>
 
     <string name="textUsers">Gerenciar Usuários</string>
+    <string name="textInputSearch">Pesquisar Usuário...</string>
+    <string name="textAddUsers">Adicionar novo Usuário</string>
+
+    <string name="textUpdade">Atualizar Usuário</string>
+    <string name="textBtnUpdate">Atualizar</string>
+    <string name="textAdiminUpdate">Este Usuário é admin?</string>
+
+    <string name="textAnimalCreate">Cadastrar Pet</string>
+    <string name="textInputAnimalName">Digite o nome do seu pet</string>
+    <string name="textInputAnimalAge">Digite a Idade do seu pet</string>
+    <string name="textAnimalSpecies">Digite a espécie do seu pet</string>
+    <string name="textAnimalGender">Digite o gênero do seu pet</string>
 
     <string name="error_empty_response">O servidor retornou uma resposta vazia.</string>
     <string name="error_token_not_found">Token não localizado.</string>
@@ -48,11 +60,8 @@
     <string name="error_user_email_required">Informe o email.</string>
     <string name="error_user_email_format_required">Fomato incorreto de email, adicione @ e .com.</string>
     <string name="error_user_password_required">Informe a senha.</string>
-    <string name="textInputSearch">Pesquisar Usuário...</string>
-    <string name="textAddUsers">Adicionar novo Usuário</string>
-    <string name="textUpdade">Atualizar Usuário</string>
-    <string name="textBtnUpdate">Atualizar</string>
-    <string name="textAdiminUpdate">Este Usuário é admin?</string>
+
+
 
 
 </resources>

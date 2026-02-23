@@ -1,5 +1,6 @@
 package com.example.android.ui.user.update
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +9,7 @@ import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.R
+import com.example.android.ui.user.profile.ProfileActivity
 
 class UpdateActivity : AppCompatActivity() {
 
@@ -41,9 +43,10 @@ class UpdateActivity : AppCompatActivity() {
 
         //Eventos
         btnBack_update.setOnClickListener {
-
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
-        
+
         btnUpdate.setOnClickListener {
 
         }
