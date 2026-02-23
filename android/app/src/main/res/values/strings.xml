@@ -9,6 +9,7 @@
     <string name="textCreate">Criar conta</string>
     <string name="textBtnCreate">Cadastrar</string>
     <string name="textBackCreate">Já tem uma conta?</string>
+
     <string name="textInputUser">Digite um nome de usuário</string>
     <string name="textInputName">Digite um nome completo</string>
     <string name="textInputEmail">Digite um email válido</string>
@@ -17,8 +18,18 @@
 
     <string name="textLogin">Logar</string>
     <string name="textBackLogin">Não tem uma conta?</string>
+
     <string name="textForgetPassword">Esqueceu a senha?</string>
     <string name="textLinkForgetPassword">Recuperar</string>
+
+    <string name="textTitleProfile">Perfil</string>
+    <string name="erro_profile">Informação não encontarda</string>
+
+    <string name="textUseField">Usuário:</string>
+    <string name="textNameField">Nome:</string>
+    <string name="textEmailField">E-mail:</string>
+    <string name="textPasswordField">Senha:</string>
+    <string name="textLogOutField">Sair da Conta</string>
 
     <string name="error_empty_response">O servidor retornou uma resposta vazia.</string>
     <string name="error_token_not_found">Token não localizado.</string>
@@ -35,5 +46,6 @@
     <string name="error_user_email_required">Informe o email.</string>
     <string name="error_user_email_format_required">Fomato incorreto de email, adicione @ e .com.</string>
     <string name="error_user_password_required">Informe a senha.</string>
+
 
 </resources>

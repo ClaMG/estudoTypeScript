@@ -1,4 +1,4 @@
-package com.example.android.View
+package com.example.android.ui.user.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.R
+import com.example.android.ui.user.create.CreateActivity
+import com.example.android.ui.user.login.LoginActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var btnLogin_home: Button

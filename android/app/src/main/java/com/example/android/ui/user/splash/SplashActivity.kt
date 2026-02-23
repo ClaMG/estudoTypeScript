@@ -1,11 +1,12 @@
-package com.example.android.View
+package com.example.android.ui.user.splash
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.R
-import android.content.Intent
 import androidx.lifecycle.lifecycleScope
+import com.example.android.R
+import com.example.android.ui.user.home.HomeActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
