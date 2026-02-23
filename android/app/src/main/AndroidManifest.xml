@@ -12,13 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android">
         <activity
-            android:name=".ui.user.byId.ProfileActivity"
+            android:name=".ui.user.update.UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.byAll.UsersManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.user.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.user.create.CreateActivity"
+            android:name=".ui.user.create.CreateUserActivity"
             android:exported="false" />
         <activity
             android:name=".ui.user.home.HomeActivity"

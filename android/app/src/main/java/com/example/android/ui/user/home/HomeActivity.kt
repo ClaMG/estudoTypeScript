@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.R
-import com.example.android.ui.user.create.CreateActivity
+import com.example.android.ui.user.create.CreateUserActivity
 import com.example.android.ui.user.login.LoginActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -18,16 +18,18 @@ class HomeActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
 
+        //Componentes
         btnLogin_home = findViewById(R.id.btnLogin_home);
         btnRegister_home = findViewById(R.id.btnRegister_home);
 
+        //Eventos
         btnLogin_home.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         btnRegister_home.setOnClickListener {
-            val intent = Intent(this, CreateActivity::class.java)
+            val intent = Intent(this, CreateUserActivity::class.java)
             startActivity(intent)
         }
 
