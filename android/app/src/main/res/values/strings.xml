@@ -60,8 +60,8 @@
     <string name="error_user_email_required">Informe o email.</string>
     <string name="error_user_email_format_required">Fomato incorreto de email, adicione @ e .com.</string>
     <string name="error_user_password_required">Informe a senha.</string>
-
-
+    <string name="textAnimals">Gerenciamento de Pets</string>
+    <string name="textAddAnimals">Adicionar novo Pet</string>
 
 
 </resources>

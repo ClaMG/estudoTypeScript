@@ -12,7 +12,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="@string/textCreate"
         android:textColor="@color/orange"
         android:textSize="30sp"
@@ -25,7 +25,7 @@
         android:id="@+id/imageView4"
         android:layout_width="303dp"
         android:layout_height="104dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,14 +36,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister_create"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.477">
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,18 +155,29 @@
                 android:id="@+id/txPassword_create"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/textInputPassword"
                 android:inputType="text"
                 android:textColor="@color/orange"
                 android:textColorHint="@color/blue" />
+
+            <ImageButton
+                android:id="@+id/btnEye_create"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_eye_close"
+                android:tint="@color/blueDark" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/bg_input_blue"
             android:orientation="horizontal"
             android:padding="5dp">
@@ -185,14 +195,64 @@
                 android:id="@+id/txPasswordRepeat_create"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/textInputPasswordRepeat"
                 android:inputType="text"
                 android:textColor="@color/orange"
                 android:textColorHint="@color/blue" />
+
+            <ImageButton
+                android:id="@+id/btnEyeRepeat_create"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_eye_close"
+                android:tint="@color/blueDark" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="@drawable/bg_input_blue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0"
+                android:padding="7dp"
+                android:scaleType="centerCrop"
+                android:tint="@color/blueDark"
+                app:srcCompat="@drawable/ic_admin" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:text="@string/textAdiminUpdate"
+                android:textColor="@color/blue"
+                android:textSize="23sp" />
+
+            <Switch
+                android:id="@+id/swAdmin_create"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_weight="0"
+                android:trackTint="@color/orange"
+                app:thumbTint="@color/blueDark" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <Button

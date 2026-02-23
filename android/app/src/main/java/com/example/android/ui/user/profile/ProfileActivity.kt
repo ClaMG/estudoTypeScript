@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.R
+import com.example.android.ui.animal.byAll.AnimalManagementActivity
 import com.example.android.ui.user.users.UsersManagementActivity
 import com.example.android.ui.user.home.HomeActivity
 import com.example.android.ui.user.update.UpdateActivity
@@ -23,6 +24,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var btnGetPets_profile: ImageButton
     private lateinit var btnUpdate_profile: ImageButton
     private lateinit var btnDelete_profile: ImageButton
+    private lateinit var btnEye_profile: ImageButton
 
     private lateinit var llBtnLogOut_profile: View
 
@@ -46,6 +48,8 @@ class ProfileActivity : AppCompatActivity() {
 
         llBtnLogOut_profile = findViewById(R.id.llBtnLogOut_profile)
 
+        btnEye_profile = findViewById(R.id.btnEye_profile)
+
 
         //Eventos
         btnGetUsers_profile.setOnClickListener {
@@ -54,7 +58,8 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         btnGetPets_profile.setOnClickListener {
-            //tela
+            val intent = Intent(this, AnimalManagementActivity::class.java)
+            startActivity(intent)
         }
 
         btnUpdate_profile.setOnClickListener {
@@ -69,6 +74,10 @@ class ProfileActivity : AppCompatActivity() {
         llBtnLogOut_profile.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }
+
+        btnEye_profile.setOnClickListener {
+
         }
 
 

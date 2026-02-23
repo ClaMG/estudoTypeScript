@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.R
 import com.example.android.ui.user.profile.ProfileActivity
-import com.example.android.ui.user.update.UpdateActivity
 
 class UsersManagementActivity : AppCompatActivity() {
 
@@ -23,7 +22,7 @@ class UsersManagementActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_users_management)
+        setContentView(R.layout.activity_users)
 
         //Componentes
         txSearchBar_users = findViewById(R.id.txSearchBar_users)

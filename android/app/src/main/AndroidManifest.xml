@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android">
         <activity
+            android:name=".ui.animal.update.UpdateAnimalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.animal.byAll.AnimalManagementActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.animal.create.CreateAnimalActivity"
             android:exported="false" />
         <activity

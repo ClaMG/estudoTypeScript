@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,9 @@ class CreateUserActivity : AppCompatActivity() {
     private lateinit var btnRegister_create: Button
     private lateinit var linkLogin_create: TextView
 
+    private lateinit var btnEye_create: ImageButton
+    private lateinit var btnEyeRepeat_create: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,6 +42,9 @@ class CreateUserActivity : AppCompatActivity() {
         btnRegister_create = findViewById(R.id.btnRegister_create)
         linkLogin_create = findViewById(R.id.linkLogin_create)
 
+        btnEye_create = findViewById(R.id.btnEye_create)
+        btnEyeRepeat_create = findViewById(R.id.btnEyeRepeat_create)
+
         //Eventos
         btnRegister_create.setOnClickListener {
 
@@ -47,6 +54,16 @@ class CreateUserActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        btnEye_create.setOnClickListener {
+
+        }
+
+        btnEyeRepeat_create.setOnClickListener {
+
+        }
+
+
 
     }
 }

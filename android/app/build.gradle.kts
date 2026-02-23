@@ -1,13 +1,20 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
 
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
 android {
     namespace = "com.example.android"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.android"
@@ -20,12 +27,20 @@ android {
     }
 
     buildTypes {
+        debug {
+            // Use getProperty para buscar a chave do arquivo
+            val baseUrl = localProperties.getProperty("BASE_URL") ?: "http://10.0.2.2:3001/"
+            buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            val baseUrl = localProperties.getProperty("BASE_URL") ?: "https://api.sua-producao.com/"
+            buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
         }
     }
     compileOptions {
@@ -34,6 +49,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
     }
 }
 

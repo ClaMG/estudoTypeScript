@@ -24,6 +24,9 @@ class UpdateActivity : AppCompatActivity() {
 
     private lateinit var swAdmin_update: Switch
 
+    private lateinit var btnEye_update: ImageButton
+    private lateinit var btnEyeRepeat_update: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -41,6 +44,9 @@ class UpdateActivity : AppCompatActivity() {
 
         swAdmin_update = findViewById(R.id.swAdmin_update)
 
+        btnEye_update = findViewById(R.id.btnEye_update)
+        btnEyeRepeat_update = findViewById(R.id.btnEyeRepeat_update)
+
         //Eventos
         btnBack_update.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
@@ -48,6 +54,14 @@ class UpdateActivity : AppCompatActivity() {
         }
 
         btnUpdate.setOnClickListener {
+
+        }
+
+        btnEye_update.setOnClickListener {
+
+        }
+
+        btnEyeRepeat_update.setOnClickListener {
 
         }
 

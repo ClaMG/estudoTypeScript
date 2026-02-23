@@ -1,5 +1,6 @@
 package com.example.android.ui.animal.create
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.android.R
+import com.example.android.ui.animal.byAll.AnimalManagementActivity
 
 class CreateAnimalActivity : AppCompatActivity() {
 
@@ -37,9 +39,9 @@ class CreateAnimalActivity : AppCompatActivity() {
         btnRegister_create_pet = findViewById(R.id.btnRegister_create_pet)
 
         //Eventos
-
         btnBack_create_pet.setOnClickListener {
-            //Tela
+            val intent = Intent(this, AnimalManagementActivity::class.java)
+            startActivity(intent)
         }
 
         btnRegister_create_pet.setOnClickListener {

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var linkCreate_login: TextView
 
     private lateinit var btnLogin_login: Button
+    private lateinit var btnEye_login: ImageButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
         linkCreate_login = findViewById(R.id.linkCreate_login)
 
         btnLogin_login = findViewById(R.id.btnLogin_login)
+        btnEye_login = findViewById(R.id.btnEye_login)
 
         //Eventos
         linkPassword_login.setOnClickListener {
@@ -47,6 +51,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnLogin_login.setOnClickListener {
+
+        }
+
+        btnEye_login.setOnClickListener {
 
         }
     }
