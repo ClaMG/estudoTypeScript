@@ -50,6 +50,9 @@
     <string name="error_user_password_required">Informe a senha.</string>
     <string name="textInputSearch">Pesquisar Usuário...</string>
     <string name="textAddUsers">Adicionar novo Usuário</string>
+    <string name="textUpdade">Atualizar Usuário</string>
+    <string name="textBtnUpdate">Atualizar</string>
+    <string name="textAdiminUpdate">Este Usuário é admin?</string>
 
 
 </resources>

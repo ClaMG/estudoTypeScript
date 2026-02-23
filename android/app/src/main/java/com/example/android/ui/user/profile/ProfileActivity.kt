@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.R
-import com.example.android.ui.user.byAll.UsersManagementActivity
+import com.example.android.ui.user.users.UsersManagementActivity
 import com.example.android.ui.user.home.HomeActivity
+import com.example.android.ui.user.update.UpdateActivity
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -57,7 +58,8 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         btnUpdate_profile.setOnClickListener {
-
+            val intent = Intent(this, UpdateActivity::class.java)
+            startActivity(intent)
         }
 
         btnDelete_profile.setOnClickListener {

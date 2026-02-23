@@ -66,11 +66,12 @@
                 android:id="@+id/txUser_create"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/textInputUser"
                 android:inputType="text"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textColorHint="@color/blue" />
         </LinearLayout>
 
@@ -95,11 +96,12 @@
                 android:id="@+id/txName_create"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/textInputName"
                 android:inputType="text"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textColorHint="@color/blue" />
         </LinearLayout>
 
@@ -124,11 +126,12 @@
                 android:id="@+id/txEmail_create"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/textInputEmail"
                 android:inputType="text"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textColorHint="@color/blue" />
         </LinearLayout>
 
@@ -153,11 +156,12 @@
                 android:id="@+id/txPassword_create"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/textInputPassword"
                 android:inputType="text"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textColorHint="@color/blue" />
         </LinearLayout>
 
@@ -181,11 +185,12 @@
                 android:id="@+id/txPasswordRepeat_create"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/textInputPasswordRepeat"
                 android:inputType="text"
-                android:textColor="@color/blue"
+                android:textColor="@color/orange"
                 android:textColorHint="@color/blue" />
         </LinearLayout>
     </LinearLayout>

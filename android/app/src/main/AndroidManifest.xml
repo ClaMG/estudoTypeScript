@@ -15,7 +15,7 @@
             android:name=".ui.user.update.UpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.user.byAll.UsersManagementActivity"
+            android:name=".ui.user.users.UsersManagementActivity"
             android:exported="false" />
         <activity
             android:name=".ui.user.profile.ProfileActivity"
