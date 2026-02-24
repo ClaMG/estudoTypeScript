@@ -62,6 +62,7 @@
     <string name="error_user_password_required">Informe a senha.</string>
     <string name="textAnimals">Gerenciamento de Pets</string>
     <string name="textAddAnimals">Adicionar novo Pet</string>
+    <string name="textAnimalUpdate">Atualizar Pet</string>
 
 
 </resources>

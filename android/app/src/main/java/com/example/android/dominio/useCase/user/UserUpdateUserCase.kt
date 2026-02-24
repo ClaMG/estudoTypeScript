@@ -6,7 +6,7 @@ import com.example.android.dominio.util.isValidEmail
 
 class UserUpdateUserCase (private val repository: UserRepositoryInterface) {
 
-    suspend fun excute(token: String, id: Int, user: String, name: String, email: String, password: String?, admin: Boolean?): Result<Mensage> {
+    suspend fun execute(token: String, id: Int, user: String, name: String, email: String, password: String?, admin: Boolean?): Result<Mensage> {
         return try {
             if (token.isBlank()) return Result.failure(Exception("Token não localizado"))
             if (id == null) return Result.failure(Exception("Id do usuario para editar não localizado"))

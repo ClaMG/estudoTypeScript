@@ -5,7 +5,7 @@ import com.example.android.dominio.repository.UserRepositoryInterface
 
 class UserByIdUserCase (private val repository: UserRepositoryInterface) {
 
-    suspend fun excute(token: String, user: String): Result<User> {
+    suspend fun execute(token: String, user: String): Result<User> {
         return try {
             if (token.isBlank()) return Result.failure(Exception("Token não localizado"))
             if (user.isBlank()) return Result.failure(Exception("Informe o usuário"))

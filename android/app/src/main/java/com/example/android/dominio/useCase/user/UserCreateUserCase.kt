@@ -6,7 +6,7 @@ import com.example.android.dominio.util.isValidEmail
 
 class UserCreateUserCase (private val repository: UserRepositoryInterface){
 
-    suspend fun excute(user: String, name: String, email: String, password: String): Result<Mensage> {
+    suspend fun execute(user: String, name: String, email: String, password: String): Result<Mensage> {
         return try {
             if (user.isBlank()) return Result.failure(Exception("Informe o usuário"))
             if (name.isBlank()) return Result.failure(Exception("Informe o nome completo"))

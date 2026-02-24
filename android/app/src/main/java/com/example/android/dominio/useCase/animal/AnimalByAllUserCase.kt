@@ -5,7 +5,7 @@ import com.example.android.dominio.repository.AnimalRepositoryInterface
 
 class AnimalByAllUserCase (private val repository: AnimalRepositoryInterface) {
 
-    suspend fun excute(token: String, idView: Int?): Result<List<Animal>> {
+    suspend fun execute(token: String, idView: Int?): Result<List<Animal>> {
         return try {
             if (token.isBlank()) return Result.failure(Exception("Token não localizado"))
 

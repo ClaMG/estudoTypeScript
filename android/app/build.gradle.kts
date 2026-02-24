@@ -60,6 +60,7 @@ android {
 dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")// Retrofit
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")// Converter GSON
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")//ViewModel
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

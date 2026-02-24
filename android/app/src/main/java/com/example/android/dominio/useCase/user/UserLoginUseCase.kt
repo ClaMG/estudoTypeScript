@@ -5,7 +5,7 @@ import com.example.android.dominio.repository.UserRepositoryInterface
 
 class UserLoginUseCase (private val repository: UserRepositoryInterface) {
 
-     suspend fun excute(user: String, password: String): Result<Login> {
+     suspend fun execute(user: String, password: String): Result<Login> {
         return try {
             if (user.isBlank()) return Result.failure(Exception("Informe o usuário"))
             if (password.isBlank()) return Result.failure(Exception("Informe a senha"))

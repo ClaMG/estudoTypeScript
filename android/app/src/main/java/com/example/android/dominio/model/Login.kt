@@ -1,6 +1,6 @@
 package com.example.android.dominio.model
 
 data class Login(
-    val mensage: String,
+    val menssage: String,
     val token: String
 )

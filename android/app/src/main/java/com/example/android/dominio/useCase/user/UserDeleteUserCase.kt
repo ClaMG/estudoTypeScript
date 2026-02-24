@@ -5,7 +5,7 @@ import com.example.android.dominio.repository.UserRepositoryInterface
 
 class UserDeleteUserCase (private val repository: UserRepositoryInterface){
 
-    suspend fun excute(token: String, user: String): Result<Mensage> {
+    suspend fun execute(token: String, user: String): Result<Mensage> {
         return try {
             if (token.isBlank()) return Result.failure(Exception("Token não localizado"))
             if (user.isBlank()) return Result.failure(Exception("Informe o usuário"))

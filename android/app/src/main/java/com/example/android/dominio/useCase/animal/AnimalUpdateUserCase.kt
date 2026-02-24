@@ -5,7 +5,7 @@ import com.example.android.dominio.repository.AnimalRepositoryInterface
 
 class AnimalUpdateUserCase (private val repository: AnimalRepositoryInterface) {
 
-    suspend fun excute(token: String, id: Int, name: String, age: Int, species: String, gender: String ): Result<Mensage> {
+    suspend fun execute(token: String, id: Int, name: String, age: Int, species: String, gender: String ): Result<Mensage> {
         return try {
             if (token.isBlank()) return Result.failure(Exception("Token não localizado"))
             if (id == null) return Result.failure(Exception("Id do pet não localizado"))

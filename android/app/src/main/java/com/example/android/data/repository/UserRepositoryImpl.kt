@@ -37,7 +37,7 @@ class UserRepositoryImpl (private val remoteUserDataSource: RemoteUserDataSource
 
         // Model de resposta
         return Login(
-            mensage = response.message,
+            menssage = response.message,
             token = response.token
         )
     }

@@ -52,34 +52,56 @@ class ProfileActivity : AppCompatActivity() {
 
 
         //Eventos
+
+        //Buscar dados
+        val token = intent.getStringExtra("USER_TOKEN")
+        if (token != null) {
+            //conferir token
+        } else {
+            out()
+        }
+
+
+        //Visualizar usuários
         btnGetUsers_profile.setOnClickListener {
             val intent = Intent(this, UsersManagementActivity::class.java)
+            intent.putExtra("USER_TOKEN", token)
             startActivity(intent)
         }
 
+        //Visualizar pets
         btnGetPets_profile.setOnClickListener {
             val intent = Intent(this, AnimalManagementActivity::class.java)
             startActivity(intent)
         }
 
+        //atualizar usuário
         btnUpdate_profile.setOnClickListener {
             val intent = Intent(this, UpdateActivity::class.java)
             startActivity(intent)
         }
 
+        //deletar usuário
         btnDelete_profile.setOnClickListener {
-
+            //logica para deletar
         }
 
+        //Sair
         llBtnLogOut_profile.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            out()
         }
 
         btnEye_profile.setOnClickListener {
-
+            //Logica do olho
         }
 
 
+    }
+
+    private fun out(){
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("USER_TOKEN", "")
+        startActivity(intent)
+        finish()
     }
 }
