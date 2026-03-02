@@ -1,4 +1,4 @@
-import {User} from '../entities/entitiesUser'
+import {User} from '../../entities/entitiesUser'
 
 export interface IUserRepository{
     save(user: User):Promise<void>
@@ -6,6 +6,7 @@ export interface IUserRepository{
     findByUser( user: User["user"]): Promise<User | null>
     findByEmail( email: User["email"]): Promise<User | null>
     findById( idUser: User["id"]): Promise<User | null>
+    findByAdmin(): Promise<User[]>;    
     delete(idUser: User["id"]): Promise<void>;
 
 

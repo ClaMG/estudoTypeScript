@@ -1,11 +1,11 @@
 import {User} from '../entities/entitiesUser.js'
 import {IUserRepository} from '../port/repository/interfaceRepository.js'
-import {IByAllRequest} from '../port/userCase/interfaceUserCase.js'
+import {IRequestAdminView} from '../port/userCase/interfaceUserCase.js'
 import { NotFoundError} from '../../utils/erros/erros.js'
-export class ByAllUserCase{
+export class ByAdminViewUserCase{
     constructor(private byAllUserRepository: IUserRepository) {}
 
-    async execute({idUser}: IByAllRequest): Promise<User[]> {
+    async execute({idUser}: IRequestAdminView): Promise<User[]> {
         if(idUser == null){
             throw new NotFoundError("Não conseguimos indetificar o seu usuario")
         }
@@ -15,16 +15,14 @@ export class ByAllUserCase{
         if(!idExists){
             throw new NotFoundError("Não conseguimos indetificar o seu usuario")
         }
-
-        if(!idExists.admin){
-            throw new NotFoundError("Você não é admin, não pode visualizar outros usuarios")
-        }
           
 
-        const usersAll = await this.byAllUserRepository.seeAll()
+        const usersAdm = await this.byAllUserRepository.findByAdmin()
 
-        
+        if (!usersAdm){
+            throw new NotFoundError("Nenhum admin encontrado")
+        }
 
-        return usersAll
+        return usersAdm
     } 
 }

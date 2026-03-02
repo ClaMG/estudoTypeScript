@@ -25,6 +25,8 @@ router.delete('/delete', authMiddleware, (req, res) => deleteControler.handle(re
 
 router.post('/create', async (req, res) => await createControler.handle(req, res))
 
+router.post('/create-admin', async (req, res) => await createControler.handle(req, res))
+
 router.post('/login', async (req, res) => await loginControler.handle(req, res))
 
 export default router

@@ -1,7 +1,7 @@
-import {IUserRepository} from '../port/interfaceRepository.js'
+import {IUserRepository} from '../port/repository/interfaceRepository.js'
 import {comparePassword} from '../../utils/security/encryptPassword.js'
 import jwt from 'jsonwebtoken';
-import {ILoginRequest} from '../port/interfaceUserCase.js'
+import {ILoginRequest} from '../port/userCase/interfaceUserCase.js'
 import { NotFoundError} from '../../utils/erros/erros.js'
 
 export class LoginUserCase{

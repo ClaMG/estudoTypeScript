@@ -8,7 +8,16 @@ export class ControllerCreate {
 
     async handle(req: Request, res: Response): Promise<Response> {
         try {
-            const userDTO = new CreateUserDTO(req.body);
+            const idDoToken = req.idUser
+            const {user, name, email, password, admin } = req.body;
+            const userDTO = new CreateUserDTO({
+                idUser: idDoToken, 
+                user: user,
+                name: name, 
+                email: email, 
+                password: password, 
+                admin: admin
+            });
             const result = await this.useCase.execute(userDTO);
             return res.status(200).json({
                 message: "Usuário cadastrado com sucesso!",

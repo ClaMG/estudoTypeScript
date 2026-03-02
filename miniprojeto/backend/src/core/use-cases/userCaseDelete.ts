@@ -1,5 +1,5 @@
-import {IUserRepository} from '../port/interfaceRepository.js'
-import {IDeleteRequest} from '../port/interfaceUserCase.js'
+import {IUserRepository} from '../port/repository/interfaceRepository.js'
+import {IDeleteRequest} from '../port/userCase/interfaceUserCase.js'
 import { NotFoundError} from '../../utils/erros/erros.js'
 
 export class DeleteUserCase{

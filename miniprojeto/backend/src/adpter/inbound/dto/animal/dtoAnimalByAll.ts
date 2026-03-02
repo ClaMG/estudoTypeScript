@@ -1,4 +1,4 @@
-import {IByAllAnimalRequest} from '../../../../core/port/interfaceUserCaseAnimals.js'
+import {IByAllAnimalRequest} from '../../../../core/port/userCase/interfaceUserCaseAnimals.js'
 
 export class ByAllAnimalDTO {
     public readonly idUser: number;

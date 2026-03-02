@@ -1,5 +1,5 @@
 import { ModelStatic, Model } from 'sequelize';
-import { IAnimalRepository} from '../../../core/port/interfaceRepositoryAnimals'
+import { IAnimalRepository} from '../../../core/port/repository/interfaceRepositoryAnimals'
 import { Animal } from '../../../core/entities/entitiesAnimals';
 
 export class AnimalRepositories implements IAnimalRepository{

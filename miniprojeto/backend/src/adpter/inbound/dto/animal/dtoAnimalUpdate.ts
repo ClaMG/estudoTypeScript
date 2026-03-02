@@ -1,4 +1,4 @@
-import {IUpdateAnimalRequest} from '../../../../core/port/interfaceUserCaseAnimals.js'
+import {IUpdateAnimalRequest} from '../../../../core/port/userCase/interfaceUserCaseAnimals.js'
 
 export class UpdateAnimalDTO {
     public readonly id: number;

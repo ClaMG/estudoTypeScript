@@ -1,4 +1,4 @@
-import {IDeleteAnimalRequest} from '../../../../core/port/interfaceUserCaseAnimals.js'
+import {IDeleteAnimalRequest} from '../../../../core/port/userCase/interfaceUserCaseAnimals.js'
 
 export class DeleteAnimalDTO {
     public readonly idUser: number;

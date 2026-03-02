@@ -1,4 +1,4 @@
-import {ILoginRequest} from '../../../core/port/interfaceUserCase.js'
+import {ILoginRequest} from '../../../core/port/userCase/interfaceUserCase.js'
 
 export class LoginUserDTO {
     public readonly user: string;

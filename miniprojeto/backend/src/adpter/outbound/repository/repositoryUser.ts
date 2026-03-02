@@ -1,5 +1,5 @@
 import { User } from '../../../core/entities/entitiesUser.js';
-import {IUserRepository} from '../../../core/port/interfaceRepository.js'
+import {IUserRepository} from '../../../core/port/repository/interfaceRepository.js'
 import { ModelStatic, Model } from 'sequelize';
 
 export class UserRepositories implements IUserRepository{
@@ -95,5 +95,22 @@ export class UserRepositories implements IUserRepository{
         u.id
     ));
     }
+
+    async findByAdmin(): Promise<User[]> {
+    const userFound = await this.userModel.findAll({ 
+        where: { admin: true },
+        raw: true,
+        order: [['id', 'ASC']]
+    }) as any[];
+
+    return userFound.map(u => new User(
+        u.user,
+        u.name, 
+        u.email, 
+        u.password, 
+        u.admin, 
+        u.id
+    ));
+}
 
 }

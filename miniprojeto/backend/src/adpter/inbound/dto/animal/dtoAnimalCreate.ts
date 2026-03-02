@@ -1,4 +1,4 @@
-import {ICreateAnimalRequest} from '../../../../core/port/interfaceUserCaseAnimals.js'
+import {ICreateAnimalRequest} from '../../../../core/port/userCase/interfaceUserCaseAnimals.js'
 
 export class CreateAnimalDTO {
     public readonly idUser: number;

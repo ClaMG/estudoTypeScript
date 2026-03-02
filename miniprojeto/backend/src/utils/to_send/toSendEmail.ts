@@ -42,6 +42,10 @@ class MailProvider {
             return false;
         }
     }
+
+    async sendEmailAdm(emailRecipient: string, user: string){
+
+    }
 }
 
 export default new MailProvider();

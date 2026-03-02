@@ -1,6 +1,6 @@
 import {User} from '../entities/entitiesUser.js'
-import {IUserRepository} from '../port/interfaceRepository.js'
-import {IByIdRequest} from '../port/interfaceUserCase.js'
+import {IUserRepository} from '../port/repository/interfaceRepository.js'
+import {IByIdRequest} from '../port/userCase/interfaceUserCase.js'
 import { NotFoundError} from '../../utils/erros/erros.js'
 
 export class ByIdUserCase{

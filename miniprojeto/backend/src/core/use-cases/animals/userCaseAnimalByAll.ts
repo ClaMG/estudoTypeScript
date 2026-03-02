@@ -1,6 +1,6 @@
-import {IAnimalRepository} from '../../port/interfaceRepositoryAnimals.js'
-import { IByAllAnimalRequest } from '../../port/interfaceUserCaseAnimals.js'
-import { IUserRepository } from '../../port/interfaceRepository.js'
+import {IAnimalRepository} from '../../port/repository/interfaceRepositoryAnimals.js'
+import { IByAllAnimalRequest } from '../../port/userCase/interfaceUserCaseAnimals.js'
+import { IUserRepository } from '../../port/repository/interfaceRepository.js'
 import {Animal} from '../../entities/entitiesAnimals.js'
 import { NotFoundError} from '../../../utils/erros/erros.js'
 

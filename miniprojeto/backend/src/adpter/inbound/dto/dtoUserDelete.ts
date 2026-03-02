@@ -1,4 +1,4 @@
-import {IDeleteRequest} from '../../../core/port/interfaceUserCase.js'
+import {IDeleteRequest} from '../../../core/port/userCase/interfaceUserCase.js'
 
 export class DeleteUserDTO {
     public readonly idUser: number

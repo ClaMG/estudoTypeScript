@@ -1,4 +1,4 @@
-import {IUpdateRequest} from '../../../core/port/interfaceUserCase.js'
+import {IUpdateRequest} from '../../../core/port/userCase/interfaceUserCase.js'
 
 export class UpdateUserDTO {
     public readonly idUser: number;

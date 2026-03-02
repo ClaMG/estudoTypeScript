@@ -1,4 +1,4 @@
-import {Animal} from '../entities/entitiesAnimals.js'
+import {Animal} from '../../entities/entitiesAnimals.js'
 
 export interface ICreateAnimalRequest {
     idUser: Animal["idUser"]

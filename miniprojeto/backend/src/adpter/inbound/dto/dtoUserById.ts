@@ -1,4 +1,4 @@
-import {IByIdRequest} from '../../../core/port/interfaceUserCase.js'
+import {IByIdRequest} from '../../../core/port/userCase/interfaceUserCase.js'
 
 export class ByIdUserDTO {
     public readonly idUser: number;

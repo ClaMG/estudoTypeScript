@@ -1,10 +1,12 @@
-import {User} from '../entities/entitiesUser'
+import {User} from '../../entities/entitiesUser'
 
 export interface ICreateRequest {
     user: string
     name: string
     email: string 
-    password: string  
+    password?: string  
+    idUser?:User["id"]
+    admin?: boolean
 }
 
 export interface IUpdateRequest {
@@ -34,4 +36,15 @@ export interface IByIdRequest {
 
 export interface IByAllRequest {
     idUser:User["id"]
+}
+
+
+export interface IRequestAdminView{
+    idUser:User["id"]
+}
+
+
+export interface IRequestAdmin{
+    idUser:User["id"]
+    user: string
 }
