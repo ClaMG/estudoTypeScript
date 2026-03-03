@@ -96,7 +96,7 @@ export class UserRepositories implements IUserRepository{
     ));
     }
 
-    async findByAdmin(): Promise<User[]> {
+    async findAllAdmin(): Promise<User[]> {
     const userFound = await this.userModel.findAll({ 
         where: { admin: true },
         raw: true,

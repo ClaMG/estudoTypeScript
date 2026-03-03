@@ -63,7 +63,7 @@ export class CreateUserCase{
         const encryptPassword: string = (await hashPassword(passwordEnd)).toString()
 
         if(senEmail){
-            const emailSend = await MailProvider.sendEmail(email, name, user, passwordEnd, userCreateAdm)
+            const emailSend = await MailProvider.sendEmailUpdate(email, name, user, passwordEnd, userCreateAdm)
 
             if(!emailSend){
                 throw new NotFoundError("Não conseguimos encaminhar o email com a senha nova")

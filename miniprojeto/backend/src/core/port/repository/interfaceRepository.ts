@@ -6,9 +6,8 @@ export interface IUserRepository{
     findByUser( user: User["user"]): Promise<User | null>
     findByEmail( email: User["email"]): Promise<User | null>
     findById( idUser: User["id"]): Promise<User | null>
-    findByAdmin(): Promise<User[]>;    
+    findAllAdmin(): Promise<User[]>;    
     delete(idUser: User["id"]): Promise<void>;
-
 
     //admin
     seeAll(): Promise<User[]>
