@@ -13,7 +13,7 @@ export class ByAdminUserCase{
         const idExists = await this.byAdminUserRepository.findById(idUser)
 
         if(!idExists){
-            throw new NotFoundError("Não conseguimos indetificar o seu usuario")
+            throw new NotFoundError("Não conseguimos encontrar o seu usuario")
         }
 
         if(user == ""){

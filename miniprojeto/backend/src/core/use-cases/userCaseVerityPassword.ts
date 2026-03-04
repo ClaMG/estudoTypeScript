@@ -35,7 +35,7 @@ export class VeryPasswordUserCase{
 
         const passwordTemp = generateRandomPassword(8)
 
-         const data: User = new User(userExist.user, userExist.name, userExist.email, passwordTemp, userExist.admin, userExist.id);
+        const data: User = new User(userExist.user, userExist.name, userExist.email, passwordTemp, userExist.admin, userExist.id);
         
         await this.sendCodeUserRepository.update(data)
 
@@ -44,5 +44,7 @@ export class VeryPasswordUserCase{
         if(!emailSend){
             throw new NotFoundError("Não conseguimos encaminhar o email com a senha nova")
         }
+
+        await this.viryPasswordRepository.delete(codeExist.id)
     } 
 }

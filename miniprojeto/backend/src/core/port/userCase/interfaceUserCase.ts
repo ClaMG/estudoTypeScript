@@ -38,25 +38,18 @@ export interface IByAllRequest {
     idUser:User["id"]
 }
 
-
 export interface IRequestAdminView{
     idUser:User["id"]
 }
-
-
 export interface IRequestAdmin{
     idUser:User["id"]
     user: string
 }
-
 export interface ISendPassword{
     user: string 
     name: string
 }
-//novo
 export interface IForgetPassword{
     user: string
     code: string 
 }
-
-

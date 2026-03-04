@@ -5,6 +5,10 @@ import {makeCreateUser} from '../../../main/factory/factoryCreateUser.js';
 import {makeDeleteUser} from '../../../main/factory/factoryDeleteUser.js';
 import {makeLoginUser} from '../../../main/factory/factoryLoginUser.js';
 import {makeUpdateUser} from '../../../main/factory/factoryUpdateUser.js';
+import {makeForgetPasswordUser} from '../../../main/factory/factoryForgetPasswordUser.js'
+import {makeUpdatePasswordUser} from '../../../main/factory/factoryUpdatePassword.js'
+import {makeRequestAdminUser} from '../../../main/factory/factoryRequestAdmin.js'
+import {makeByAdminViewUser} from '../../../main/factory/factoryRequestAdminView.js'
 import {authMiddleware} from '../../../utils/security/auth.js';
 const router = Router();
 
@@ -14,8 +18,16 @@ const byIdControler = makeByIdUser()
 const updateControler = makeUpdateUser()
 const deleteControler = makeDeleteUser()
 const loginControler = makeLoginUser()
+const forgetPasswordControler = makeForgetPasswordUser()
+const updatePasswordControler = makeUpdatePasswordUser()
+const requestAdminControler = makeRequestAdminUser()
+const byAdminViewControler = makeByAdminViewUser()
 
 router.get('/users', authMiddleware, (req, res) => byAllControler.handle(req, res))
+
+router.get('/view-admins', authMiddleware, (req, res) => byAdminViewControler.handle(req, res))//
+
+router.post('/send-admin', authMiddleware, (req, res) => requestAdminControler.handle(req, res))//
 
 router.get('/user', authMiddleware, (req, res) => byIdControler.handle(req, res))
 
@@ -25,8 +37,12 @@ router.delete('/delete', authMiddleware, (req, res) => deleteControler.handle(re
 
 router.post('/create', async (req, res) => await createControler.handle(req, res))
 
-router.post('/create-admin', async (req, res) => await createControler.handle(req, res))
+router.post('/create-admin', authMiddleware, async (req, res) => await createControler.handle(req, res))
 
 router.post('/login', async (req, res) => await loginControler.handle(req, res))
+
+router.put('/update-password', async (req, res) => await updatePasswordControler.handle(req, res))//
+
+router.post('/forget-password', async (req, res) => await forgetPasswordControler.handle(req, res))//
 
 export default router

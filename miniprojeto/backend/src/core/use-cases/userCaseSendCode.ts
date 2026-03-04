@@ -16,7 +16,7 @@ export class SendCodeUserCase{
         const userExist = await this.sendCodeUserRepository.findByUser(user)
 
         if(!userExist || !userExist.id){
-            throw new NotFoundError("Usuarário não conhecido")
+            throw new NotFoundError("Usuarário não encontrado")
         }
 
         if(userExist.name != name){

@@ -1,4 +1,5 @@
 import {ILoginRequest} from '../../../core/port/userCase/interfaceUserCase.js'
+import { NotFoundError} from '../../../utils/erros/erros.js'
 
 export class LoginUserDTO {
     public readonly user: string;
@@ -6,7 +7,7 @@ export class LoginUserDTO {
     
     constructor({ user, password }: ILoginRequest) {
         if (password === undefined) {
-            throw new Error("A senha do usuário é obrigatório para a atualização.");
+            throw new NotFoundError("Não conseguimos indetificar o seu usuario")
         }
         this.user = user;
         this.password = password;

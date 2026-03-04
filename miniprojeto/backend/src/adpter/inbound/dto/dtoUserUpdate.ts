@@ -1,4 +1,5 @@
 import {IUpdateRequest} from '../../../core/port/userCase/interfaceUserCase.js'
+import { NotFoundError} from '../../../utils/erros/erros.js'
 
 export class UpdateUserDTO {
     public readonly idUser: number;
@@ -11,10 +12,10 @@ export class UpdateUserDTO {
 
     constructor({ idUser, id, user, name, email, password, admin }: IUpdateRequest) {
         if (idUser === undefined) {
-            throw new Error("O seu ID de usuário é obrigatório para a atualização.");
+            throw new NotFoundError("O seu ID de usuário não foi encontrado.");
         }
         if (id === undefined) {
-            throw new Error("O ID do usuário é obrigatório para a atualização.");
+            throw new NotFoundError("O ID do usuário é obrigatório para a atualização.");
         }
         this.id = id;
         this.idUser = idUser;
