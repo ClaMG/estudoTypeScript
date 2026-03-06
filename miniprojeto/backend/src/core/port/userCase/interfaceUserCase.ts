@@ -45,11 +45,11 @@ export interface IRequestAdmin{
     idUser:User["id"]
     user: string
 }
-export interface ISendPassword{
+export interface ISendPassword{//enviar codigo
     user: string 
     name: string
 }
-export interface IForgetPassword{
+export interface IForgetPassword{//salvar senha
     user: string
     code: string 
 }

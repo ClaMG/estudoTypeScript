@@ -12,7 +12,6 @@ export class ControllerRequestAdmin {
             const userDTO = new RequestAdminViewUserDTO({ idUser: idDoToken });
             const result = await this.useCase.execute(userDTO);
             return res.status(200).json({
-                message: "Senha atualizada com sucesso, verifique seu email",
                 data: result 
             });
         } catch (error: any) {

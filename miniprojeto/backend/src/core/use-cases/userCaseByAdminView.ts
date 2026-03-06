@@ -15,7 +15,10 @@ export class ByAdminViewUserCase{
         if(!idExists){
             throw new NotFoundError("Não conseguimos indetificar o seu usuario")
         }
-          
+
+        if(idExists.admin){
+            throw new NotFoundError("Você já é admin")
+        }
 
         const usersAdm = await this.byAdminViewUserRepository.findAllAdmin()
 

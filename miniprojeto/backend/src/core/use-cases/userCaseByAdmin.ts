@@ -16,6 +16,10 @@ export class ByAdminUserCase{
             throw new NotFoundError("Não conseguimos encontrar o seu usuario")
         }
 
+        if(idExists.admin){
+            throw new NotFoundError("Você já é admin")
+        }
+
         if(user == ""){
              throw new NotFoundError("Indique qual admin você pretende pedir acesso")
         }

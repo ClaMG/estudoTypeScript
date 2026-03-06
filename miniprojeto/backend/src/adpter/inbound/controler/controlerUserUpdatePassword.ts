@@ -1,15 +1,15 @@
 import {UpdatePasswordUserDTO} from '../dto/dtoUserUpdatePassword'
 import { Request, Response } from 'express';
-import {SendCodeUserCase} from '../../../core/use-cases/userCaseSendCode'
+import {VeryPasswordUserCase} from '../../../core/use-cases/userCaseVerityPassword'
 import {AppError} from '../../../utils/erros/erros.js'
 
 export class ControllerUpdatePassword {
-    constructor(private useCase: SendCodeUserCase) {}
+    constructor(private useCase: VeryPasswordUserCase) {}
 
     async handle(req: Request, res: Response): Promise<Response> {
         try {
-            const { user, name } = req.body
-            const userDTO = new UpdatePasswordUserDTO({ name: name, user: user });
+            const { user, code } = req.body
+            const userDTO = new UpdatePasswordUserDTO({ code: code, user: user });
             const result = await this.useCase.execute(userDTO);
             return res.status(200).json({
                 message: "Senha atualizada com sucesso, verifique seu email",

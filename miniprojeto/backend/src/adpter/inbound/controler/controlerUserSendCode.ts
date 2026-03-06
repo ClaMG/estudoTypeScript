@@ -1,18 +1,18 @@
-import {ForgetPasswordUserDTO} from '../dto/dtoUserSendPassword'
+import {SendCodeUserDTO} from '../dto/dtoUserSendCode'
 import { Request, Response } from 'express';
-import {VeryPasswordUserCase} from '../../../core/use-cases/userCaseVerityPassword'
+import {SendCodeUserCase} from '../../../core/use-cases/userCaseSendCode'
 import {AppError} from '../../../utils/erros/erros.js'
 
-export class ControllerForgetPassword {
-    constructor(private useCase: VeryPasswordUserCase) {}
+export class ControllerSendCode {
+    constructor(private useCase: SendCodeUserCase) {}
 
     async handle(req: Request, res: Response): Promise<Response> {
         try {
-            const { user, code } = req.body
-            const userDTO = new ForgetPasswordUserDTO({ code: code, user: user });
+            const { user, name } = req.body
+            const userDTO = new SendCodeUserDTO({ name: name, user: user });
             const result = await this.useCase.execute(userDTO);
             return res.status(200).json({
-                message: "Senha atualizada com sucesso, verifique seu email",
+                message: "Codigo temporario foi gerado, verifique seu email",
                 data: result 
             });
         } catch (error: any) {

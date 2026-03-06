@@ -1,13 +1,13 @@
-import {ISendPassword} from '../../../core/port/userCase/interfaceUserCase'
+import {IForgetPassword} from '../../../core/port/userCase/interfaceUserCase'
 
 export class UpdatePasswordUserDTO {
     public readonly user: string;
-    public readonly name: string;
+    public readonly code: string;
+
     
-    
-    constructor({name, user}: ISendPassword) {
+    constructor({code, user}: IForgetPassword) {
         this.user = user
-        this.name = name
+        this.code = code
        
         Object.freeze(this);
     }

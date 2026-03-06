@@ -19,21 +19,21 @@ export class CreateUserCase{
         var userCreateAdm: string = ""
 
         if(idUser != null || idUser != undefined){//se tiver o id
-             const userExists = await this.saveUserRepository.findByUser(user)
+             const IdExists = await this.saveUserRepository.findById(idUser)
 
-            if(!userExists){
+            if(!IdExists){
                 throw new NotFoundError("Não conseguimos localizar seu usuário")
             }
 
-            if(!userExists.admin){
-                throw new NotFoundError("Você não é administrador")
+            if(!IdExists.admin){
+                throw new NotFoundError("Você não é administrador, não pode adicionar usuários enquanto estiver logado")
             }
 
-            if(password != "" || password != null){
+            if(passwordEnd != "" || password != null){
                 throw new NotFoundError("Você não pode escolher a senha do usuário")
             }else{
                 passwordEnd = generateRandomPassword(6)
-                userCreateAdm = userExists.user
+                userCreateAdm = IdExists.user
                 senEmail = true
             }
 
