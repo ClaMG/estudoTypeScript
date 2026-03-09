@@ -25,9 +25,9 @@ const byAdminViewControler = makeByAdminViewUser()
 
 router.get('/users', authMiddleware, (req, res) => byAllControler.handle(req, res))
 
-router.get('/view-admins', authMiddleware, (req, res) => byAdminViewControler.handle(req, res))
+router.get('/view-admins', authMiddleware, (req, res) => byAdminViewControler.handle(req, res))//n
 
-router.post('/send-admin', authMiddleware, (req, res) => requestAdminControler.handle(req, res))
+router.post('/send-admin', authMiddleware, (req, res) => requestAdminControler.handle(req, res))//n
 
 router.get('/user', authMiddleware, (req, res) => byIdControler.handle(req, res))
 
@@ -37,12 +37,12 @@ router.delete('/delete', authMiddleware, (req, res) => deleteControler.handle(re
 
 router.post('/create', async (req, res) => await createControler.handle(req, res))
 
-router.post('/create-admin', authMiddleware, async (req, res) => await createControler.handle(req, res))
+router.post('/create-admin', authMiddleware, async (req, res) => await createControler.handle(req, res))//n
 
 router.post('/login', async (req, res) => await loginControler.handle(req, res))
 
-router.put('/update-password', async (req, res) => await updatePasswordControler.handle(req, res))
+router.put('/update-password', async (req, res) => await updatePasswordControler.handle(req, res))//n
 
-router.post('/send-code', async (req, res) => await sendCodeControler.handle(req, res))
+router.post('/send-code', async (req, res) => await sendCodeControler.handle(req, res))//n
 
 export default router

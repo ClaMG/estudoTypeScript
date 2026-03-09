@@ -5,16 +5,12 @@ import com.google.gson.annotations.SerializedName
 //formato de como ... da api
 
 //Envia
-data class UserByIdRequest(
+data class UserAdminRequest(
     @SerializedName("user") val user: String
 )
 
 //Recebe
-data class UserByIdResponse(
-    val user: String,
-    val name: String,
-    val email: String,
-    val admin: Boolean,
-    val password: String,
-    val id: Int
+data class UserAdminResponse(
+    val message: String,
+    val data: Boolean
 )

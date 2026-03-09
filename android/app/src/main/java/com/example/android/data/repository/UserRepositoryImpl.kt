@@ -1,9 +1,13 @@
 package com.example.android.data.repository
 
+import com.example.android.data.remote.DTO.user.UserAdminRequest
 import com.example.android.data.remote.DTO.user.UserByIdRequest
+import com.example.android.data.remote.DTO.user.UserCreateAdminRequest
 import com.example.android.data.remote.DTO.user.UserCreateRequest
 import com.example.android.data.remote.DTO.user.UserDeleteRequest
 import com.example.android.data.remote.DTO.user.UserLoginRequest
+import com.example.android.data.remote.DTO.user.UserSendCodeRequest
+import com.example.android.data.remote.DTO.user.UserUpdatePasswordRequest
 import com.example.android.data.remote.DTO.user.UserUpdateRequest
 import com.example.android.data.remote.RemoteUserDataSource
 import com.example.android.dominio.model.Login
@@ -39,6 +43,20 @@ class UserRepositoryImpl (private val remoteUserDataSource: RemoteUserDataSource
         return Login(
             menssage = response.message,
             token = response.token
+        )
+    }
+
+    //Create Admin
+    override suspend fun createAdminUser(token: String, user: String, name: String, email: String, admin: Boolean): Mensage {
+        //Dto envia
+        val request = UserCreateAdminRequest(user = user, name = name, email = email, admin = admin)
+        // DataSource
+        val response = remoteUserDataSource.registerAdminUserDataSource(token, request)
+
+        // Model de resposta
+        return Mensage(
+            mensage = response.message,
+            data = response.data
         )
     }
 
@@ -99,7 +117,67 @@ class UserRepositoryImpl (private val remoteUserDataSource: RemoteUserDataSource
             user = response.user,
             name = response.name,
             email= response.email,
-            admin= response.admin
+            admin= response.admin,
+            password = response.password,
+        )
+    }
+
+    //View Admins
+    override suspend fun viewAdminUser(token: String): List<User> {
+        // DataSource
+        val response = remoteUserDataSource.viewAdminUserDataSource(token)
+
+        // Model de resposta
+        return response.map { dto ->
+            User(
+                user = dto.user,
+                name = dto.name,
+                email = dto.email,
+                admin = dto.admin,
+                id = dto.id
+            )
+        }
+    }
+
+    //Request Admin
+    override suspend fun adminUser(token: String, user: String): Mensage {
+        //Dto envia
+        val request = UserAdminRequest(user)
+        // DataSource
+        val response = remoteUserDataSource.adminUserDataSource(token, request)
+
+        // Model de resposta
+        return Mensage(
+            mensage = response.message,
+            data = response.data
+        )
+    }
+
+    //Send Code
+    override suspend fun sendCodeUser(user: String, name: String): Mensage {
+        //Dto envia
+        val request = UserSendCodeRequest(user, name)
+        // DataSource
+        val response = remoteUserDataSource.sendCodeUserDataSource(request)
+
+        // Model de resposta
+        return Mensage(
+            mensage = response.message,
+            data = response.data
+        )
+    }
+
+    //Update Password
+    override suspend fun updatePasswordUser(user: String, code: String): Mensage {
+        //Dto envia
+        val request = UserUpdatePasswordRequest(user, code)
+        // DataSource
+        val response = remoteUserDataSource.updatePasswordUserDataSource(request)
+
+        // Model de resposta
+        return Mensage(
+            mensage = response.message,
+            data = response.data
         )
     }
 }

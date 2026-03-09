@@ -1,16 +1,25 @@
 package com.example.android.data.remote
 
+import com.example.android.data.remote.DTO.user.UserAdminRequest
+import com.example.android.data.remote.DTO.user.UserAdminResponse
 import com.example.android.data.remote.DTO.user.UserByAllResponse
 import com.example.android.data.remote.DTO.user.UserByIdRequest
 import com.example.android.data.remote.DTO.user.UserByIdResponse
+import com.example.android.data.remote.DTO.user.UserCreateAdminRequest
+import com.example.android.data.remote.DTO.user.UserCreateAdminResponse
 import com.example.android.data.remote.DTO.user.UserCreateRequest
 import com.example.android.data.remote.DTO.user.UserCreateResponse
 import com.example.android.data.remote.DTO.user.UserDeleteRequest
 import com.example.android.data.remote.DTO.user.UserDeleteResponse
 import com.example.android.data.remote.DTO.user.UserLoginRequest
 import com.example.android.data.remote.DTO.user.UserLoginResponse
+import com.example.android.data.remote.DTO.user.UserSendCodeRequest
+import com.example.android.data.remote.DTO.user.UserSendCodeResponse
+import com.example.android.data.remote.DTO.user.UserUpdatePasswordRequest
+import com.example.android.data.remote.DTO.user.UserUpdatePasswordResponse
 import com.example.android.data.remote.DTO.user.UserUpdateRequest
 import com.example.android.data.remote.DTO.user.UserUpdateResponse
+import com.example.android.data.remote.DTO.user.UserViewAdminResponse
 import com.example.android.data.remote.api.ApiUser
 import com.example.android.data.remote.erro.ErrorClass
 
@@ -35,6 +44,19 @@ class RemoteUserDataSource(private val api: ApiUser) {
     // Login
     suspend fun loginUserDataSource(request: UserLoginRequest) : UserLoginResponse {
         val response = api.loginUserApi(request)//faz a parte logica com a api (mandar e receber)
+
+        if (response.isSuccessful){//Verificação e resposta
+            return response.body() ?: throw Exception("Resposta vazia")
+
+        }else{
+            val errorMsg = ErrorClass().parseError(response)
+            throw Exception(errorMsg)
+        }
+    }
+
+    //Create Admin
+    suspend fun registerAdminUserDataSource(token: String, request: UserCreateAdminRequest) : UserCreateAdminResponse {
+        val response = api.registerAdminUserApi(token, request) //faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
             return response.body() ?: throw Exception("Resposta vazia")
@@ -87,6 +109,57 @@ class RemoteUserDataSource(private val api: ApiUser) {
     //Get By id
     suspend fun byIdUserDataSource(token: String, request: UserByIdRequest) : UserByIdResponse {
         val response = api.byIdUserApi(formatToken(token), request)//faz a parte logica com a api (mandar e receber)
+
+        if (response.isSuccessful){//Verificação e resposta
+            return response.body() ?: throw Exception("Resposta vazia")
+
+        }else{
+            val errorMsg = ErrorClass().parseError(response)
+            throw Exception(errorMsg)
+        }
+    }
+
+    //View Admins
+    suspend fun viewAdminUserDataSource(token: String) : List<UserViewAdminResponse> {
+        val response = api.viewAdminUserApi(formatToken(token))//faz a parte logica com a api (mandar e receber)
+
+        if (response.isSuccessful){//Verificação e resposta
+            return response.body() ?: emptyList()
+
+        }else{
+            val errorMsg = ErrorClass().parseError(response)
+            throw Exception(errorMsg)
+        }
+    }
+
+    //Request Admin
+    suspend fun adminUserDataSource(token: String, request: UserAdminRequest) : UserAdminResponse {
+        val response = api.adminUserApi(formatToken(token), request)//faz a parte logica com a api (mandar e receber)
+
+        if (response.isSuccessful){//Verificação e resposta
+            return response.body() ?: throw Exception("Resposta vazia")
+
+        }else{
+            val errorMsg = ErrorClass().parseError(response)
+            throw Exception(errorMsg)
+        }
+    }
+    //Send Code
+    suspend fun sendCodeUserDataSource(request: UserSendCodeRequest) : UserSendCodeResponse {
+        val response = api.sendCodeUserApi( request)//faz a parte logica com a api (mandar e receber)
+
+        if (response.isSuccessful){//Verificação e resposta
+            return response.body() ?: throw Exception("Resposta vazia")
+
+        }else{
+            val errorMsg = ErrorClass().parseError(response)
+            throw Exception(errorMsg)
+        }
+    }
+
+    //Update Password
+    suspend fun updatePasswordUserDataSource( request: UserUpdatePasswordRequest) : UserUpdatePasswordResponse {
+        val response = api.updatePasswordUserApi( request)//faz a parte logica com a api (mandar e receber)
 
         if (response.isSuccessful){//Verificação e resposta
             return response.body() ?: throw Exception("Resposta vazia")

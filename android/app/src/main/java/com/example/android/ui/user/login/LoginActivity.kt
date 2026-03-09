@@ -11,9 +11,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.android.R
 import com.example.android.ui.user.create.CreateUserActivity
+import com.example.android.ui.user.create.CreateViewModel
 import com.example.android.ui.user.profile.ProfileActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -37,6 +39,8 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
         //Componentes
 
         //Inputs
@@ -55,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
         setupObservers()
 
         //Eventos
+        //Ir para esquecer senha
         linkPassword_login.setOnClickListener {
             //tela
             /*
@@ -71,6 +76,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+        //Logar
         btnLogin_login.setOnClickListener {
             val user = txUser_login.text.toString()
             val password = txPassword_login.text.toString()
@@ -78,12 +84,12 @@ class LoginActivity : AppCompatActivity() {
             viewModel.logar(user, password)
         }
 
+        //Olho da senha
         btnEye_login.setOnClickListener {
-            //logica do olho
+
         }
     }
 
-    //Observar a situação de login
     private fun setupObservers() {
         viewModel.state.observe(this) { state ->
             when (state) {

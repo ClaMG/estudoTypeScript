@@ -19,15 +19,18 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         //Componentes
+        //Botões
         btnLogin_home = findViewById(R.id.btnLogin_home);
         btnRegister_home = findViewById(R.id.btnRegister_home);
 
         //Eventos
+        //Ir para o login
         btnLogin_home.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
+        //Ir para o cadastrar
         btnRegister_home.setOnClickListener {
             val intent = Intent(this, CreateUserActivity::class.java)
             startActivity(intent)

@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
         tvVersion.setText("Verção 0.22.05")
 
         lifecycleScope.launch {
-            delay(3000) // Espera 3 segundos sem travar o app
+            delay(3000) // Espera 3 segundos
 
             val intent = Intent(this@SplashActivity, HomeActivity::class.java)
             startActivity(intent)

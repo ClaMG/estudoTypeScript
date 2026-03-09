@@ -33,30 +33,36 @@ class UpdateActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_update)
 
         //Construtores
+        //Text View
         txUser_update = findViewById(R.id.txUser_update)
         txName_update = findViewById(R.id.txName_update)
         txEmail_update = findViewById(R.id.txEmail_update)
         txPassword_update = findViewById(R.id.txPassword_update)
         txPasswordRepeat_update = findViewById(R.id.txPasswordRepeat_update)
 
+        //Buttons
         btnBack_update = findViewById(R.id.btnBack_update)
         btnUpdate = findViewById(R.id.btnUpdate)
-
-        swAdmin_update = findViewById(R.id.swAdmin_update)
 
         btnEye_update = findViewById(R.id.btnEye_update)
         btnEyeRepeat_update = findViewById(R.id.btnEyeRepeat_update)
 
+        //Switch
+        swAdmin_update = findViewById(R.id.swAdmin_update)
+
         //Eventos
+        //Voltar
         btnBack_update.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
+        //Atualizar
         btnUpdate.setOnClickListener {
 
         }
 
+        //Olho da senha
         btnEye_update.setOnClickListener {
 
         }

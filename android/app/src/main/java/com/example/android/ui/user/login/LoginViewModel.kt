@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 
 //Estados
 sealed class LoginState {
-    object Idle : LoginState()               // Parado/Inicial
-    object Loading : LoginState()            // Carregando
+    object Idle : LoginState() // Inicial
+    object Loading : LoginState() // Carregando
     data class Success(val login: Login) : LoginState() // Sucesso
     data class Error(val message: String) : LoginState() // Erro
 }

@@ -8,6 +8,40 @@
     android:background="@color/beige"
     tools:context=".ui.user.profile.ProfileActivity">
 
+    <LinearLayout
+        android:id="@+id/llBtnAdmin_profile"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/bg_btn_orange"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6">
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="0"
+            android:src="@drawable/ic_logout"
+            android:tint="@color/beige"
+            app:srcCompat="@drawable/ic_admin" />
+
+        <Button
+            android:id="@+id/btnAdmin_profile"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:backgroundTint="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/tvAdmin"
+            android:textColor="@color/beige"
+            android:textSize="16sp"
+            app:cornerRadius="0dp" />
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="303dp"
@@ -325,7 +359,7 @@
         android:textColor="@color/orange"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/llBtnAdmin_profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

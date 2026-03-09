@@ -63,6 +63,7 @@
     <string name="textAnimals">Gerenciamento de Pets</string>
     <string name="textAddAnimals">Adicionar novo Pet</string>
     <string name="textAnimalUpdate">Atualizar Pet</string>
+    <string name="tvAdmin">Admin</string>
 
 
 </resources>
