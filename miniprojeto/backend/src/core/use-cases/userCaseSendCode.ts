@@ -16,11 +16,11 @@ export class SendCodeUserCase{
         const userExist = await this.sendCodeUserRepository.findByUser(user)
 
         if(!userExist || !userExist.id){
-            throw new NotFoundError("Usuarário não encontrado")
+            throw new NotFoundError("Usuário não encontrado")
         }
 
         if(userExist.name != name){
-            throw new NotFoundError("Usuarário não tem esse nome")
+            throw new NotFoundError("Usuário não tem esse nome")
         }
 
         const code: string = generateRandomPassword(4)

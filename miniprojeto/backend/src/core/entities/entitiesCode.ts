@@ -1,11 +1,11 @@
 export class Code{
-    public id?: number
     public idUser: number
     public code: string
-
+    public id?: number
+    
     constructor(idUser: number, code: string, id?: number){
-        this.id = id
         this.idUser = idUser
         this.code = code
+        this.id = id
     }
 }

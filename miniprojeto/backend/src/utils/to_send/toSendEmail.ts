@@ -180,7 +180,7 @@ class MailProvider {
 
                             <div style="background-color: #fff8e1; padding: 15px; border-radius: 6px; margin-top: 20px; border: 1px solid #ffe0b2;">
                                 <p style="margin: 0; font-size: 14px; color: #f57c00;">
-                                    <strong>⚠️ Ação Necessária:</strong> Esta senha é válida apenas para o próximo acesso. Por questões de segurança, você será solicitado a criar uma nova senha assim que entrar no sistema.
+                                    <strong>⚠️ Ação Necessária:</strong> Esta senha é válida apenas para o próximo acesso. Por questões de segurança criar uma nova senha assim que entrar no sistema.
                                 </p>
                             </div>
                             

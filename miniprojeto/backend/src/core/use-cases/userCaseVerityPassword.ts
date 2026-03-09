@@ -5,6 +5,8 @@ import {ICodeRepository} from '../port/repository/intefaceRepsitoryCode'
 import MailProvider from '../../utils/to_send/toSendEmail.js'
 import {generateRandomPassword} from '../../utils/security/randomPassword.js'
 import {User} from '../entities/entitiesUser.js'
+import {hashPassword} from '../../utils/security/encryptPassword.js'
+
 export class VeryPasswordUserCase{
     constructor(private viryPasswordRepository: ICodeRepository, private sendCodeUserRepository: IUserRepository) {}
 
@@ -35,7 +37,9 @@ export class VeryPasswordUserCase{
 
         const passwordTemp = generateRandomPassword(8)
 
-        const data: User = new User(userExist.user, userExist.name, userExist.email, passwordTemp, userExist.admin, userExist.id);
+        const encryptPassword: string = (await hashPassword(passwordTemp)).toString()
+
+        const data: User = new User(userExist.user, userExist.name, userExist.email, encryptPassword, userExist.admin, userExist.id);
         
         await this.sendCodeUserRepository.update(data)
 

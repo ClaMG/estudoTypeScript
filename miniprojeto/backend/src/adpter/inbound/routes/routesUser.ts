@@ -41,8 +41,8 @@ router.post('/create-admin', authMiddleware, async (req, res) => await createCon
 
 router.post('/login', async (req, res) => await loginControler.handle(req, res))
 
-router.put('/update-password', async (req, res) => await updatePasswordControler.handle(req, res))//corrigir
+router.put('/update-password', async (req, res) => await updatePasswordControler.handle(req, res))
 
-router.post('/send-code', async (req, res) => await sendCodeControler.handle(req, res))//corrigir
+router.post('/send-code', async (req, res) => await sendCodeControler.handle(req, res))
 
 export default router

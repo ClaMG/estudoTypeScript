@@ -23,9 +23,9 @@ export class CodeRepositories implements ICodeRepository{
         if (!codeFound) return null;
 
         return new Code(
-            codeFound.id,
             codeFound.idUser,
-            codeFound.code
+            codeFound.code,
+            codeFound.id
         );
     }
 
