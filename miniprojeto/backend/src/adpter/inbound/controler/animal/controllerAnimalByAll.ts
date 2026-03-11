@@ -6,13 +6,13 @@ import {AppError} from '../../../../utils/erros/erros.js'
 export class ControllerByAllAnimal {
     constructor(private animalCase: ByAllAnimalUserCase) {}
 
-    async handle(req: Request, res: Response): Promise<Response> {
+    async handle(req: Request<{ idView: number }>, res: Response): Promise<Response> {
         try {
             const idDoToken = req.idUser
-            const { idView } = req.body
+            const { idView } = req.params
             const animalDTO = new ByAllAnimalDTO({ 
                 idUser:idDoToken, 
-                idView: idView || null, 
+                idView: idView, 
                 });
             const result = await this.animalCase.execute(animalDTO);
             return res.status(201).json( result );

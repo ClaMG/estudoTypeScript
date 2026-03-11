@@ -11,7 +11,7 @@ const controllerCreate = makeCreateAnimal()
 const controllerDelete = makeDeleteAnimal()
 const controllerUpdate = makeUpdateAnimal()
 
-router.get('/animals', authMiddleware, (req, res) => controllerByAll.handle(req, res))
+router.get('/animals/:idView', authMiddleware, (req, res) => controllerByAll.handle(req, res))//c
 router.post('/create', authMiddleware, (req, res) => controllerCreate.handle(req, res))
 router.delete('/delete', authMiddleware, (req, res) => controllerDelete.handle(req, res))
 router.put('/update', authMiddleware, (req, res) => controllerUpdate.handle(req, res))
