@@ -1,30 +1,42 @@
+import { tr } from 'zod/locales';
 import { User } from '../../../core/entities/entitiesUser.js';
 import {IUserRepository} from '../../../core/port/repository/interfaceRepository.js'
 import { ModelStatic, Model } from 'sequelize';
 
 export class UserRepositories implements IUserRepository{
     constructor(private userModel: ModelStatic<Model<any, any>>) {}
-    async save(user: User): Promise<void> {
-        await this.userModel.create({
-            user: user.user,
-            name: user.name, 
-            email: user.email,
-            password: user.password,
-            admin: user.admin || false,
-        });
+    async save(user: User): Promise<boolean> {
+       try {
+            await this.userModel.create({
+                user: user.user,
+                name: user.name, 
+                email: user.email,
+                password: user.password,
+                admin: user.admin || false,
+            });
+            
+            return true; 
+        } catch (error) {
+            return false
+        }
     }
 
-    async update(user: User): Promise<string> {
-        const [affectedRows] = await this.userModel.update({
-            user: user.user,
-            name: user.name,
-            email: user.email,
-            password: user.password,
-            admin: user.admin
-        }, {
-            where: { id: user.id }
-        });
-        return affectedRows > 0 ? "Atualizado" : "Erro ao atualizar";
+    async update(user: User): Promise<boolean> {
+        try {
+                await this.userModel.update({
+                user: user.user,
+                name: user.name,
+                email: user.email,
+                password: user.password,
+                admin: user.admin
+            }, {
+                where: { id: user.id }
+            });
+            return true;
+        } catch (error) {
+            return false
+        }
+        
     }
 
     async findByUser(user: User['user']): Promise<User | null> {
@@ -75,10 +87,16 @@ export class UserRepositories implements IUserRepository{
             userFound.id);
     }
 
-    async delete(id: User['id']): Promise<void> {
-        await this.userModel.destroy({
-            where: { id: id }
-        });
+    async delete(id: User['id']): Promise<boolean> {
+        try {
+            await this.userModel.destroy({
+                where: { id: id }
+            });
+            return true
+        } catch (error) {
+            return false
+        }
+        
     }
 
     async seeAll(): Promise<User[]> {

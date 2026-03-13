@@ -31,7 +31,7 @@ export class LoginUserCase{
         );
 
         return {
-            token:token
+            token:token 
         }
     } 
 }

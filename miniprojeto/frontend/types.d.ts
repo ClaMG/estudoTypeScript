@@ -25,6 +25,11 @@ export interface UpdateData{
     admin?: boolean;
 }
 
+export interface SendCodeData{
+    user: string;
+    name: string;
+}
+
 //Response
 export interface LoginResponse {
     token: string;

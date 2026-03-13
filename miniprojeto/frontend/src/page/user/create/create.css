@@ -1,0 +1,225 @@
+/* 1. Estrutura Principal */
+.app-wrapper-register {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f3e3; 
+    height: 100vh;      /* Trava o tamanho do fundo na altura exata da tela */
+    width: 100vw;
+    overflow-x: hidden; /* Esconde a rolagem horizontal (para os lados) */
+    
+    /* A MÁGICA DA ROLAGEM AQUI: */
+    overflow-y: auto;   /* Cria a barra de rolagem vertical apenas quando precisar */
+}
+
+/* 2. Container Central */
+.container-register {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 20px 15px;
+    /* Adicionando margem no topo caso seu header seja fixed (como vimos antes) */
+    margin-top: 3%; 
+    margin-bottom: 30px; /* Espaço no rodapé para não colar embaixo */
+}
+
+/* 3. Card de Cadastro */
+.card-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    gap: 6px;
+}
+
+/* 4. Título e Logo */
+.title-register {
+    color: #5b8a83;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logo-container-register {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-img-register {
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+/* 5. Formulário */
+.form-register {
+    width: 100%;
+    max-width: 320px; /* Levemente mais largo que o login para acomodar textos maiores */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 6. Inputs Capsula */
+.input-group-register {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #5b8a83;
+    border-radius: 20px;
+    padding: 0 12px;
+    background: transparent;
+    height: 40px;
+}
+
+.icon-register img {
+    width: 16px;
+    height: auto;
+    margin-right: 8px;
+    /* Filtro para deixar os ícones com a cor do tema (#326866) */
+    filter: invert(37%) sepia(12%) saturate(1661%) hue-rotate(130deg) brightness(97%) contrast(88%);
+}
+
+.input-field-register {
+    border: none;
+    border-bottom: 1px solid #5b8a83;
+    background: transparent;
+    flex: 1;
+    padding: 4px 0;
+    color: #5b8a83;
+    outline: none;
+    font-size: 0.85rem;
+}
+
+.input-field-register::placeholder {
+    color: rgba(91, 138, 131, 0.7); /* Placeholder levemente transparente */
+}
+
+/* 7. Mensagens de Erro (Formik) */
+.error-message {
+    color: #e74c3c; /* Vermelho suave */
+    font-size: 0.75rem;
+    margin-top: -8px; /* Puxa o erro para perto do input */
+    margin-left: 12px;
+    font-weight: 600;
+}
+
+/* =========================================
+   8. SWITCH TOGGLE (Botão Admin)
+   ========================================= */
+.switch-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    color: #5b8a83;
+    border: 1.5px solid #5b8a83;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 22px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #5b8a83; /* Fica verde quando ativado */
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px); /* Bolinha vai para a direita */
+}
+
+/* 9. Botão Cadastrar */
+.btn-submit-register {
+    background-color: #d88a4f;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-submit-register:hover:not(:disabled) {
+    background-color: #c4763e;
+}
+
+.btn-submit-register:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn-submit-register:disabled {
+    background-color: #e8bd9b; /* Cor mais clara quando estiver carregando */
+    cursor: not-allowed;
+}
+
+/* 10. Link de Rodapé */
+.footer-links-register {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #5b8a83;
+}
+
+.highlight-register {
+    color: #d88a4f;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================================
+   11. RESPONSIVIDADE
+   ========================================= */
+@media (max-width: 480px) {
+    .logo-img-register {
+        width: 160px;
+    }
+    .title-register {
+        font-size: 1.6rem;
+    }
+    .form-register {
+        max-width: 100%;
+    }
+    .container-register {
+        padding: 10px;
+    }
+}

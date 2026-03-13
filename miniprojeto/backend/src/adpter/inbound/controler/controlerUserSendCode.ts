@@ -12,7 +12,7 @@ export class ControllerSendCode {
             const userDTO = new SendCodeUserDTO({ name: name, user: user });
             const result = await this.useCase.execute(userDTO);
             return res.status(200).json({
-                message: "Codigo temporario foi gerado, verifique seu email",
+                message: "Código temporario foi gerado, verifique seu email",
                 data: result 
             });
         } catch (error: any) {

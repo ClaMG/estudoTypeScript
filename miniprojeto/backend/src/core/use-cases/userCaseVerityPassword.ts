@@ -10,7 +10,7 @@ import {hashPassword} from '../../utils/security/encryptPassword.js'
 export class VeryPasswordUserCase{
     constructor(private viryPasswordRepository: ICodeRepository, private sendCodeUserRepository: IUserRepository) {}
 
-    async execute({user, code}: IForgetPassword): Promise<void> {
+    async execute({user, code}: IForgetPassword): Promise<boolean> {
         if(code == null ){
             throw new NotFoundError("Preencha todos os campos")
         }
@@ -47,8 +47,11 @@ export class VeryPasswordUserCase{
         
         if(!emailSend){
             throw new NotFoundError("Não conseguimos encaminhar o email com a senha nova")
+        }else{
+            await this.viryPasswordRepository.delete(codeExist.id)
+            return true
         }
 
-        await this.viryPasswordRepository.delete(codeExist.id)
+        
     } 
 }

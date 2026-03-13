@@ -8,7 +8,7 @@ import {Code} from '../entities/entitiesCode'
 export class SendCodeUserCase{
     constructor(private sendCodeUserRepository: IUserRepository, private sendCodeRepository: ICodeRepository) {}
 
-    async execute({user, name}: ISendPassword): Promise<void> {
+    async execute({user, name}: ISendPassword): Promise<boolean> {
         if(user == null || name == null){
             throw new NotFoundError("Preencha todos os campos")
         }
@@ -39,6 +39,8 @@ export class SendCodeUserCase{
 
         if(!emailSend){
             throw new NotFoundError("Erro ao enviar um email ao admin")
+        }else{
+            return true
         }
 
     } 

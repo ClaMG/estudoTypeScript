@@ -5,7 +5,7 @@ import MailProvider from '../../utils/to_send/toSendEmail.js'
 export class ByAdminUserCase{
     constructor(private byAdminUserRepository: IUserRepository) {}
 
-    async execute({idUser, user}: IRequestAdmin): Promise<void> {
+    async execute({idUser, user}: IRequestAdmin): Promise<boolean> {
         if(idUser == null ){
             throw new NotFoundError("Não conseguimos indetificar o seu usuario")
         }
@@ -34,6 +34,8 @@ export class ByAdminUserCase{
 
         if(!emailSend){
             throw new NotFoundError("Erro ao enviar um email ao admin")
+        }else{
+            return true
         }
 
     } 

@@ -1,0 +1,158 @@
+/* 1. Reset e Estrutura Principal */
+.app-wrapper-login {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f3e3; /* Bege da sua identidade */
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Trava a tela para parecer um App */
+}
+
+/* 2. Container que centraliza o bloco de Login */
+.container-login {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centralização vertical e horizontal */
+    padding: 20px;
+}
+
+/* 3. O Cartão de Login (Bloco Único) */
+.card-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; 
+    gap: 8px;
+}
+
+/* 4. Título */
+.title-login {
+    color: #5b8a83;
+    font-size: 2.6rem !important;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 6%;
+}
+
+.logo-img-login {
+    width: 300px !important;
+    height: auto !important;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+/* 6. Formulário */
+.form-login {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+
+/* 7. Estilo dos Inputs (Estilo Cápsula) */
+.input-group-login {
+    display: flex;
+    align-items: center;
+    border: 2px solid #5b8a83;
+    border-radius: 25px;
+    padding: 0 15px;
+    background: transparent;
+    height: 48px; 
+}
+
+.icon-login img {
+    width: 18px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.input-field-login {
+    border: none;
+    border-bottom: 1.5px solid #5b8a83; /* Sublinhado interno */
+    background: transparent;
+    flex: 1;
+    padding: 5px 0;
+    color: #5b8a83;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.icon-eye-login {
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-left: 8px;
+    color: #5b8a83;
+}
+
+/* 8. Links de Auxílio */
+.forgot-password-login {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5b8a83;
+    margin-top: 2px;
+}
+
+.forgot-password-login strong {
+    color: #3e615b;
+    cursor: pointer;
+}
+
+/* 9. Botão Entrar */
+.btn-submit-login {
+    background-color: #d88a4f;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-submit-login:hover {
+    background-color: #c4763e;
+}
+
+.btn-submit-login:active {
+    transform: scale(0.98);
+}
+
+/* 10. Link de Cadastro */
+.footer-links-login {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #5b8a83;
+}
+
+.highlight-login {
+    color: #d88a4f;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.icon-login img, 
+.icon-eye-login img {
+    /* Esse filtro matemático converte a cor preta em #326866 */
+    filter: invert(37%) sepia(12%) saturate(1661%) hue-rotate(130deg) brightness(97%) contrast(88%);
+}
+
+/* 11. Ajuste para telas pequenas (Mobile) */
+@media (max-height: 650px) {
+    .logo-img-login {
+        width: 140px; /* Diminui o logo se a tela for baixa */
+    }
+    .card-login {
+        gap: 5px;
+    }
+    .title-login {
+        font-size: 1.3rem;
+    }
+    .app-wrapper-login {
+        overflow-y: auto; /* Permite scroll apenas em telas minúsculas */
+    }
+}

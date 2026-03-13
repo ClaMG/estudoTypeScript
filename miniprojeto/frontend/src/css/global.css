@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+:root {
+  /* Fundo da logo (um cinza muito escuro, quase preto) */
+  --pet-bg: #d99a6c; 
+  
+  /* Cor principal (o laranja/cobre do cachorro) */
+  --pet-orange: #d99a6c; 
+  
+  /* Cor secundária (o verde-azulado/ciano da figura humana e texto) */
+  --pet-cyan: #7fa19c; 
+  
+  /* Cor de destaque (o creme do coraçãozinho) */
+  --pet-cream: #e9dcc9; 
+  
+  /* Cor da borda externa (dourado suave/creme) */
+  --pet-border: #c9b08a; 
+
+  /* Cor do texto secundário (para o toast) */
+  --pet-text-subtle: #a1a1a1;
+}
+
+/* No seu arquivo CSS global */
+
+/* Estilos gerais para o toast */
+.pet-connect-toast [data-title] {
+  font-weight: 700;
+  color: var(--pet-cream) !important; /* Título creme para destaque */
+}
+
+.pet-connect-toast [data-description] {
+  color: var(--pet-text-subtle) !important; /* Descrição mais suave */
+}
+
+/* --- Estilo de SUCESSO --- */
+/* Usamos o verde-azulado (cyan) para sucesso */
+.pet-connect-toast[data-type="success"] {
+  border-left: 4px solid var(--pet-cyan) !important;
+}
+
+/* Cor do ícone de sucesso */
+.pet-connect-toast[data-type="success"] [data-icon] {
+  color: var(--pet-cyan) !important;
+}
+
+/* --- Estilo de ERRO --- */
+/* Usamos o laranja (orange) para erros */
+.pet-connect-toast[data-type="error"] {
+  border-left: 4px solid var(--pet-orange) !important;
+}
+
+/* Cor do ícone de erro */
+.pet-connect-toast[data-type="error"] [data-icon] {
+  color: var(--pet-orange) !important;
+}
+
+/* Botão de fechar dourado */
+.pet-connect-toast [data-close-button] {
+  background: var(--pet-border);
+  border: none;
+  color: var(--pet-bg);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #f7f3e3; 
+    overflow: hidden; 
+}

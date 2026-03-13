@@ -5,7 +5,7 @@ import { NotFoundError} from '../../utils/erros/erros.js'
 export class DeleteUserCase{
     constructor(private deleteUserRepository: IUserRepository) {}
 
-    async execute({idUser, user}:IDeleteRequest): Promise<void> {
+    async execute({idUser, user}:IDeleteRequest): Promise<boolean> {
         if(idUser == null || user == '' ){
             throw new NotFoundError("Preencha todos os campos")
         }
@@ -34,7 +34,9 @@ export class DeleteUserCase{
             throw new NotFoundError("Usuario ativo no momento")
         }
 
-        await this.deleteUserRepository.delete(userExists.id)
+        const delet = await this.deleteUserRepository.delete(userExists.id)
+
+        return delet
 
     }
 }

@@ -1,15 +1,20 @@
 import {IByAllRequest} from '../../../core/port/userCase/interfaceUserCase.js'
 import { NotFoundError} from '../../../utils/erros/erros.js'
+import { z } from 'zod';
+
+const schema = z.object({
+    idUser: z.number().min(1, 'O Id do usuario não foi encontrado')
+})
 
 export class ByAllUserDTO {
     public readonly idUser: number;
     
-    constructor({ idUser}: IByAllRequest) {
-        if (idUser === undefined || idUser === null) {
-            throw new NotFoundError("Não conseguimos indetificar o seu usuario")
-        }
-        this.idUser = idUser;
+    constructor(data: IByAllRequest) {
+        const result = schema.safeParse(data)
         
+        if (!result.success) throw new NotFoundError(result.error.issues[0].message);
+
+        this.idUser = result.data.idUser;
 
         Object.freeze(this);
     }

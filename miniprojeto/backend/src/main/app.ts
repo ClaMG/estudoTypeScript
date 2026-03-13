@@ -4,12 +4,12 @@ import routerUser from '../adpter/inbound/routes/routesUser.js';
 import routerAnimal from '../adpter/inbound/routes/routesAnimals.js';
 const app = express();
 
-app.use(cors())
 
 const corsOptions: CorsOptions = {
-  origin: 'http://localhost:5173', // Endereço do seu Frontend
+  origin: 'http://localhost:5174',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 };
 
 app.use(cors(corsOptions))

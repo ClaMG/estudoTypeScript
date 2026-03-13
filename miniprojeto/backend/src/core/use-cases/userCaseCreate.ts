@@ -8,7 +8,7 @@ import {generateRandomPassword} from '../../utils/security/randomPassword.js'
 import MailProvider from '../../utils/to_send/toSendEmail.js'
 export class CreateUserCase{
     constructor(private saveUserRepository: IUserRepository) {}
-    async execute({user, name, email, password, idUser, admin}: ICreateRequest): Promise<void> {
+    async execute({user, name, email, password, idUser, admin}: ICreateRequest) {
         if(user == "" || name == "" || email == "" ){
             throw new NotFoundError("Preencha todos os campos")
         }
@@ -72,7 +72,9 @@ export class CreateUserCase{
 
         const data: User = new User(user, name, email, encryptPassword, adminEnd);
 
-        await this.saveUserRepository.save(data)
+        const create = await this.saveUserRepository.save(data)
+
+        return create
         
     } 
 }

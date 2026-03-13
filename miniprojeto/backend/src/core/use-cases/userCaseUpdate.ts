@@ -10,7 +10,7 @@ import { NotFoundError} from '../../utils/erros/erros.js'
 export class UpdateUserCase{
     constructor(private updateUserRepository: IUserRepository) {}
 
-    async execute({idUser, id, user, name, email, password, admin}:IUpdateRequest): Promise<void> {
+    async execute({idUser, id, user, name, email, password, admin}:IUpdateRequest): Promise<boolean> {
         if(idUser == null ||id== null || user=="" || name == "" || email == ""){
             throw new NotFoundError("Preencha todos os campos")
         }
@@ -99,7 +99,9 @@ export class UpdateUserCase{
 
         const data: User = new User(user, name, email, encryptPassword, adminStatus, id);
 
-        await this.updateUserRepository.update(data)
+        const update = await this.updateUserRepository.update(data)
+
+        return update
         
     } 
 }
