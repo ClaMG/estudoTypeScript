@@ -6,11 +6,12 @@ import {AppError} from '../../../utils/erros/erros.js'
 export class ControllerById {
     constructor(private useCase: ByIdUserCase) {}
 
-    async handle(req: Request<{ user: string }>, res: Response): Promise<Response> {
+    async handle(req: Request, res: Response): Promise<Response> {
         try {
             const idDoToken = req.idUser
-            const { user } = req.params;
-            const userDTO = new ByIdUserDTO({ idUser: idDoToken, user: user  })
+            const { user } = req.query;          
+            const userBusca = user ? String(user) : "";  
+            const userDTO = new ByIdUserDTO({ idUser: idDoToken, user: userBusca  })
             const result = await this.useCase.execute(userDTO)
             return res.status(200).json(result)
         } catch (error: any) {

@@ -17,7 +17,14 @@ export class ByIdUserCase{
             throw new NotFoundError("Não conseguimos indetificar o seu usuario")
         }
 
-        const userExists = await this.byIdUserRepository.findByUser(user)
+        let userExists
+
+        if(user == "" || user == undefined){
+            userExists = await this.byIdUserRepository.findByUser(idExists.user)
+        }else{
+            userExists = await this.byIdUserRepository.findByUser(user)
+        }
+
 
         if(!userExists){
             throw new NotFoundError("Não conseguimos indetificar o usuario que você deseja visualizar")

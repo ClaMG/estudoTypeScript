@@ -1,39 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import type {LoginData} from '../../../../types'
-import {userService} from '../../../service/services.ts'
 import { toast } from 'sonner';
+import { useState } from 'react';
+import { loginHook } from "../../../hook/loginHook.tsx";
 export function useLogin() {
     const navigate = useNavigate()
-    async function goToCreate() {
-        navigate('/cadastro')
-    }
+    const [showPassword, setShowPassword] = useState(false);
 
-    async function goToForget() {
-        navigate('/esquecer-senha')
-    }
+    async function goToCreate() {navigate('/cadastro')}
+    
+    async function goToForget() {navigate('/esquecer-senha')}
 
-    async function logar(dados: LoginData) {
-        try {
-            const result = await userService.postLogin(dados)
+    async function logar(data: LoginData) {
+       const login = await loginHook().logar(data)
 
-             if(result.token != "" ){
-                toast.success('Sucesso', {
-                    description: result.message
-                });
-                //navigate('/getUser')
-            }
-
-        } catch (error) {
-            let mensagem
-            if (error instanceof Error) {
-                mensagem = error.message; 
-            } else {
-                mensagem = `Erro desconhecido ${error}`
-            }
-            console.log("Mensagem do Back:", mensagem);
-        }
+       if(login?.result){
+            toast.success('Sucesso', {
+                description: login.mensage
+            });
+            navigate('/perfil')
+       }else{
+            toast.error('Erro',{
+                 description: login?.mensage
+             })
+       }
         
     }
 
-    return {goToCreate, goToForget, logar}
+    //Olho
+    const togglePasswordVisibility = () => setShowPassword(prev => !prev);
+
+    return {
+        goToCreate, goToForget, 
+        logar, togglePasswordVisibility, 
+        showPassword}
 }

@@ -29,7 +29,7 @@ router.get('/view-admins', authMiddleware, (req, res) => byAdminViewControler.ha
 
 router.post('/send-admin', authMiddleware, (req, res) => requestAdminControler.handle(req, res))//n
 
-router.get('/user', authMiddleware, (req, res) => byIdControler.handle(req as any, res));//c
+router.get('/user', authMiddleware, (req, res) => byIdControler.handle(req, res));//c
 
 router.put('/update', authMiddleware, (req, res) => updateControler.handle(req, res))
 

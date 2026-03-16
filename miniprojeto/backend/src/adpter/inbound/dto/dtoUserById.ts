@@ -4,12 +4,12 @@ import { z } from 'zod';
 
 const schema = z.object({
     idUser: z.number().min(1, 'O Id do usuario não foi encontrado'),
-    user: z.string().min(1, 'O Nome de usuário é obrigatório')
+    user: z.string()
 })
 
 export class ByIdUserDTO {
     public readonly idUser: number;
-    public readonly user: string;
+    public readonly user?: string;
     
 
     constructor(data: IByIdRequest) {

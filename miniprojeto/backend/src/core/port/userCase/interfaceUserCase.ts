@@ -31,7 +31,7 @@ export interface ILoginRequest {
 
 export interface IByIdRequest {
     idUser:User["id"]
-    user: string
+    user?: string
 }
 
 export interface IByAllRequest {

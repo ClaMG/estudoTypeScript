@@ -1,20 +1,21 @@
 import * as yup from 'yup';
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import logo from '../../../assets/img_logo_straight.png'
 import Header from '../../../components/header';
 import Footer from '../../../components/footer';
 import './login.css'
 import icUser from '../../../assets/ic_user.png'
 import icPassword from '../../../assets/ic_password.png'
-import icEye from '../../../assets/ic_eye_close.png'
+import icEyeClose from '../../../assets/ic_eye_close.png'
+import icEyeOpen from '../../../assets/ic_eye_open.png'
 import { useLogin } from './login.model';
 
 export default function Login(){
-    const {goToCreate, goToForget, logar} = useLogin()
+    const {goToCreate, goToForget, logar, togglePasswordVisibility, showPassword} = useLogin()
     
     const schema = yup.object({
-        user: yup.string().required('Campo obrigatório'),
-        password: yup.string().required('Campo obrigatório'),
+        user: yup.string().required('O Nome de usuário é obrigatório'),
+        password: yup.string().required('A Senha é obrigatória'),
     });
     
     return (
@@ -42,17 +43,19 @@ export default function Login(){
                                     className="input-field-login"
                                 />
                             </div>
+                            <ErrorMessage name="user" component="span" className="error-message" />
 
                             <div className="input-group-login">
                                 <span className="icon-login"><img src={icPassword} alt="icone de senha" /></span>
                                 <Field 
                                     name="password" 
-                                    type="password" 
+                                    type={showPassword ? 'text' : 'password'} 
                                     placeholder="Digite uma senha" 
                                     className="input-field-login"
                                 />
-                                <span className="icon-login"><img src={icEye} alt="icone de olho" /></span>
+                                <button type='button' className="icon-login" onClick={togglePasswordVisibility}>{showPassword ? <img src={icEyeOpen} alt="icone de olho" /> : <img src={icEyeClose} alt="icone de olho" />}</button>
                             </div>
+                            <ErrorMessage name="password" component="span" className="error-message" />
 
                             <div className="forgot-password-login">
                                 Esqueceu a senha? <strong onClick={goToForget}>Recuperar</strong>

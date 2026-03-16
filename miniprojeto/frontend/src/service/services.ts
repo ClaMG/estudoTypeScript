@@ -1,12 +1,17 @@
 import api from '../api/configApi'
-import type {LoginResponse, MessageResponse, UserResponse, LoginData, CreateData, UserData, UpdateData, SendCodeData} from '../../types'
+import type { MessageResponse, UserResponse, LoginData, CreateData, UserData, UpdateData, SendCodeData, UpdadePasswordData} from '../../types'
 import { authStorage } from '../utils/token/authStorage';
 
 export const userService ={
-    postLogin: async (dadosLogin: LoginData) =>{
-        const response = await api.post<LoginResponse>('user/login', dadosLogin)
-        if (response.data.token) authStorage.saveToken(response.data.token)
-        return response.data
+    postLogin: async (dados: LoginData) => {
+        const response = await api.post('user/login', dados);
+        const token = response.data?.token || response.data?.accessToken || response.data?.data?.token;
+
+        if (token) {
+            authStorage.saveToken(token);
+        } 
+        
+        return response.data;
     },
 
     deleteUser: async (dadosDelete: UserData)=>{
@@ -26,7 +31,7 @@ export const userGets ={
         return response.data
     },
 
-    getUser: async (dadosById: UserData)=>{
+    getUser: async (dadosById?: UserData)=>{
         const response = await api.get<UserResponse>('user/user',  {params: dadosById })
         return response.data
     },
@@ -57,7 +62,7 @@ export const userAdmin ={
 }
 
 export const userForgetPassword ={
-    putUpdatePassword:async (dadosUpdadePassword: object)=>{
+    putUpdatePassword: async (dadosUpdadePassword: UpdadePasswordData)=>{
         const response = await api.put<MessageResponse>('user/update-password', dadosUpdadePassword)
         return response.data
     },

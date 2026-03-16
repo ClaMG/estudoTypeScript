@@ -1,11 +1,15 @@
 import { authStorage } from '../../../utils/token/authStorage';
 import { useNavigate } from "react-router-dom";
 import type {CreateData} from '../../../../types'
-import {userCreate} from '../../../service/services.ts'
+import { useState } from 'react';
+import { createHook } from '../../../hook/createHook.tsx';
+import { toast } from 'sonner';
 
 export function useCreate(){
     const navigate = useNavigate()
-
+    const [showPassword, setShowPassword] = useState(false);
+    const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
+    
     const token = authStorage.getToken()
     let showFields = true
     let showAdmFields = false
@@ -14,35 +18,30 @@ export function useCreate(){
         showAdmFields = true
     }
 
-    async function goToLogin() {
-        navigate('/login')
-    }
+    async function goToLogin() { navigate('/login')}
 
     async function cadastrar(data:CreateData) {
-        try {
-            let result 
-            if(token != null){
-                result = await userCreate.postAdminCreate(data)
-            }else{
-               result = await userCreate.postCreate(data)
-            }
+        const create = await createHook().register(data)
 
-            if(result.data){
-                console.log(result.message)
-                //navigate('/home')
-            }
-           
-        } catch (error) {
-           let mensagem
-            if (error instanceof Error) {
-                mensagem = error.message; 
-            } else {
-                mensagem = `Erro desconhecido ${error}`
-            }
-            console.log("Mensagem do Back:", mensagem);
-        }
+       if(create?.result){
+            toast.success('Sucesso', {
+                description: create.mensage
+            });
+            navigate('/login')
+       }else{
+            toast.error('Erro',{
+                 description: create?.mensage
+             })
+       }
     }
-    
+
+    //Olho
+    const togglePasswordVisibility = () => setShowPassword(prev => !prev);
+    const togglePasswordRepeatVisibility = () => setShowPasswordRepeat(prev => !prev);
   
-    return{cadastrar, goToLogin, showFields, showAdmFields}
+    return{
+        cadastrar, goToLogin, 
+        showFields, showAdmFields, 
+        togglePasswordVisibility, togglePasswordRepeatVisibility, 
+        showPassword, showPasswordRepeat}
 }

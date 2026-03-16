@@ -69,6 +69,11 @@
     margin-right: 8px;
 }
 
+.icon-login{
+    background: none;
+    border: none;
+}
+
 .input-field-login {
     border: none;
     border-bottom: 1.5px solid #5b8a83; /* Sublinhado interno */

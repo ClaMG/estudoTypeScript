@@ -13,7 +13,7 @@ export interface CreateData{
 }
 
 export interface UserData{
-    user: string;
+    user?: string;
 }
 
 export interface UpdateData{
@@ -28,6 +28,11 @@ export interface UpdateData{
 export interface SendCodeData{
     user: string;
     name: string;
+}
+
+export interface UpdadePasswordData{
+    user: string;
+    code: string;
 }
 
 //Response
@@ -48,4 +53,15 @@ export interface UserResponse{
     email: string;
     password: string;
     admin: boolean;
+}
+
+export interface ProfileResponse{
+    result: boolean;
+    id?: number;
+    user: string;
+    name: string;
+    email: string;
+    password: string;
+    admin: boolean;
+    mensage?: string;
 }

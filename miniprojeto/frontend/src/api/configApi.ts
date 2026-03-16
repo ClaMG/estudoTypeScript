@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import type { InternalAxiosRequestConfig, AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
 import { authStorage } from '../utils/token/authStorage';
 
 
@@ -12,13 +12,14 @@ const api = axios.create({
     },
 });
 
-api.interceptors.request.use((config: InternalAxiosRequestConfig)=>{
-    const token = authStorage.getToken()
-
-    if(token && config.headers){
-        config.headers.Authorization = `Bearer ${token}`
+api.interceptors.request.use((config)=>{
+    const token = authStorage.getToken(); 
+    
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
     }
-    return config
+    
+    return config;
 }, (error) => {
     return Promise.reject(error);
 });
