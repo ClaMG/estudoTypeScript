@@ -4,6 +4,7 @@ import Home from './page/user/home/home';
 import Login from './page/user/login/login';
 import Create from './page/user/create/create';
 import Profile from './page/user/view/profile/profile';
+import Update from './page/user/update/update';
 import { Toaster } from 'sonner';
 function RoutesApp() {
 
@@ -26,6 +27,7 @@ function RoutesApp() {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Create />} />
           <Route path="/perfil" element={<Profile />} />
+          <Route path="/atualizar" element={<Update />} />
         </Routes>
       </BrowserRouter>
   </>

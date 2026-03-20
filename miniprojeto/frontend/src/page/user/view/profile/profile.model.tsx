@@ -6,9 +6,10 @@ import { authStorage } from '../../../../utils/token/authStorage.ts';
 
 export function useProfile() {
     const navigate = useNavigate()
-    const { getInfo } = profileHook();
     const [showFields, setShowFields] = useState(true);
     const [showAdmFields, setShowAdmFields] = useState(false);
+    const [user, setUser] = useState("");
+    
 
     const [userData, setUserData] = useState({
         user: "Carregando...",
@@ -27,40 +28,53 @@ export function useProfile() {
         navigate('/home') 
     }
 
-
-    useEffect(() => {
-    async function fetchProfileData() {
-        const dados = await getInfo(); 
-
-        // Só atualiza os estados se a busca deu certo
-        if (dados && dados.result) {
-            if (dados.admin) {
-                setShowFields(false);
-                setShowAdmFields(true);
-            }
-            
-            setUserData({
-                user: dados.user,
-                name: dados.name,
-                email: dados.email,
-                password: dados.password,
-                admin: dados.admin
-            });
-        } else {
-            // Se deu erro, avisa o usuário
-            toast.error('Erro ao carregar perfil', {
-                description: dados?.mensage || "Erro desconhecido" // Ajustado para 'message'
+    async function deleteUser() {
+        const delet = await profileHook().deleteUser(user)
+        if(delet.result){
+            toast.success('Sucesso',{
+                description: delet.mensagem
+            })
+            goToLogOut()
+        }else{
+            toast.error('Erro', {
+                description: delet.mensagem
             });
         }
     }
 
-    fetchProfileData();
-}, []);
+    useEffect(() => {
+        async function fetchProfileData() {
+            const dados = await profileHook().getInfo(); 
+            setUser(dados.user)
+            localStorage.setItem("user", dados.user)
+            if (dados && dados.result) {
+                if (dados.admin) {
+                    setShowFields(false);
+                    setShowAdmFields(true);
+                }
+                
+                setUserData({
+                    user: dados.user,
+                    name: dados.name,
+                    email: dados.email,
+                    password: dados.password,
+                    admin: dados.admin
+                });
+            } else {
+                toast.error('Erro ao carregar perfil', {
+                    description: dados?.mensage || "Erro desconhecido" 
+                });
+            }
+        }
+
+        fetchProfileData();
+    }, []);
     
     return{
         goToGetAdmins, goToGetUsers, 
         goToGetPets, goToUpdate, 
         goToLogOut, userData,
-        showFields, showAdmFields
+        showFields, showAdmFields,
+        deleteUser
     }
 }

@@ -1,239 +1,45 @@
-/* --- Variáveis de Cor baseadas na Imagem --- */
 :root {
-  --bg-profile: #f5eedf;         
-  --orange-profile: #d58654;     
-  --orange-hover-profile: #c07748; 
-  --teal-dark-profile: #2d5a55;  
-  --teal-light-profile: #6b8e88; 
-  --border-logo-profile: #d4af6d; 
+  --orange: #d58654; --orange-h: #c07748;
+  --teal-d: #2d5a55; --teal-l: #6b8e88;
+  --bg: #f5eedf;
 }
 
-/* --- Layout Principal --- */
-.app-wrapper-profile {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #eaeaea; 
-}
+.app-wrapper-profile { display: flex; flex-direction: column; min-height: 100vh; background: #eaeaea; }
+/* Container menor */
+.container-profile { flex: 1; display: flex; justify-content: center; align-items: center; padding: 1rem; }
 
-.container-profile {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem;
-}
+/* Card mais estreito e com menos padding */
+.card-profile { background: var(--bg); width: 100%; max-width: 360px; border-radius: 15px; padding: 1.2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 1rem; }
 
-/* --- Card Central --- */
-.card-profile {
-  background-color: var(--bg-profile);
-  width: 100%;
-  max-width: 450px; 
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+.logo-container-profile { display: flex; justify-content: center; margin-bottom: 0.5rem; }
+/* Logo menor */
+.logo-img-profile { height: 60px; }
 
-/* --- Logo Principal --- */
-.logo-container-profile {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
+.header-profile { display: flex; justify-content: space-between; align-items: center; padding: 0 .2rem; }
+/* Título reduzido */
+.title-profile { color: var(--orange); font: 800 1.5rem inherit; margin: 0; }
 
-.logo-img-profile {
-  height: 80px; 
-  padding: 10px 20px;
-  border-radius: 16px;
-  background-color: transparent;
-}
+/* Botões e Badges menores */
+.admin-badge-profile, .action-circle-btn-profile, .btn-logout-profile { background: var(--orange); border: none; cursor: pointer; transition: .2s; color: #fff; font-family: inherit; }
+.admin-badge-profile:hover, .action-circle-btn-profile:hover, .btn-logout-profile:hover { background: var(--orange-h); transform: scale(1.03); }
 
-/* --- Cabeçalho: Título e Badge --- */
-.header-profile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 0.5rem;
-}
+.admin-badge-profile { padding: .3rem .8rem; border-radius: 50px; display: flex; align-items: center; gap: .4rem; font-weight: 600; font-size: .75rem; }
+/* Botões redondos menores */
+.action-circle-btn-profile { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+/* Botão sair mais compacto */
+.btn-logout-profile { border-radius: 50px; padding: .6rem 1.5rem; font-size: 0.9rem; font-weight: 700; display: flex; margin: .5rem auto 0; gap: .6rem; }
 
-.title-profile {
-  color: var(--orange-profile);
-  font-size: 2rem;
-  font-weight: 800;
-  margin: 0;
-}
+/* Ícones escalados para baixo */
+.badge-icon-profile img, .logout-icon-profile img { width: 14px; height: 14px; filter: brightness(0) invert(1); }
+.action-circle-btn-profile img { width: 22px; height: 22px; filter: brightness(0) invert(1); }
+.info-icon-profile img, .btn-icon-eye-profile img { filter: invert(32%) sepia(21%) saturate(760%) hue-rotate(125deg) brightness(96%) contrast(85%); width: 16px; height: 16px; }
 
-.admin-badge-profile {
-  background-color: var(--orange-profile);
-  color: #fff;
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  
-  /* NOVAS LINHAS PARA CORRIGIR O COMPORTAMENTO DO <button> */
-  border: none;             /* Remove a borda padrão feia do navegador */
-  cursor: pointer;          /* Coloca a mãozinha ao passar o mouse */
-  font-family: inherit;     /* Garante que a fonte não mude para a fonte padrão do sistema */
-  transition: transform 0.1s, background-color 0.2s; /* Animação suave */
-}
+/* Lista de Informações compacta */
+.info-list-profile { display: flex; flex-direction: column; gap: 0.8rem; }
+.info-row-profile { display: flex; align-items: center; border-bottom: 1.5px solid var(--teal-d); padding-bottom: .3rem; gap: .6rem; }
+.info-icon-profile { display: flex; width: 20px; justify-content: center; }
+.info-label-profile { color: var(--teal-d); font-weight: 700; min-width: 60px; font-size: 0.9rem; }
+.info-value-profile { color: var(--teal-l); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.85rem; }
 
-/* Adiciona um efeito legal quando o usuário passar o mouse por cima */
-.admin-badge-profile:hover {
-  background-color: var(--orange-hover-profile);
-  transform: scale(1.05);
-}
-
-/* O ícone dentro do botão continua precisando ficar branco */
-.badge-icon-profile img {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  filter: brightness(0) invert(1); 
-}
-
-/* --- Lista de Informações --- */
-.info-list-profile {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.info-row-profile {
-  display: flex;
-  align-items: center;
-  border-bottom: 2px solid var(--teal-dark-profile);
-  padding-bottom: 0.5rem;
-  gap: 0.8rem;
-}
-
-/* CORREÇÃO: Ajuste das imagens nos ícones de linha */
-.info-icon-profile {
-  display: flex; /* Centraliza a imagem no span */
-  align-items: center;
-  justify-content: center;
-  width: 24px;  /* Tamanho fixo para alinhar os textos */
-}
-
-.info-icon-profile img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  /* Opcional: Se quiser pintar seus ícones pretos com a cor teal-dark da logo */
-  filter: invert(32%) sepia(21%) saturate(760%) hue-rotate(125deg) brightness(96%) contrast(85%);
-}
-
-.info-label-profile {
-  color: var(--teal-dark-profile);
-  font-weight: 700;
-  font-size: 1.1rem;
-  min-width: 70px; /* Garante que os ":" fiquem alinhados */
-}
-
-.info-value-profile {
-  color: var(--teal-light-profile);
-  font-size: 1rem;
-  flex: 1; 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; 
-}
-
-/* CORREÇÃO: Ícone do Olho */
-.btn-icon-eye-profile {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.btn-icon-eye-profile img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  /* MÁGICA AQUI: O mesmo filtro que pinta os outros ícones de verde-azulado */
-  filter: invert(32%) sepia(21%) saturate(760%) hue-rotate(125deg) brightness(96%) contrast(85%);
-}
-
-/* --- Botões Redondos (Ações) --- */
-.actions-profile {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-  padding: 0 1rem;
-}
-
-.action-circle-btn-profile {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background-color: var(--orange-profile);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.2s, transform 0.1s;
-}
-
-/* CORREÇÃO: Ícones dentro dos botões redondos */
-.action-circle-btn-profile img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  /* Transforma o ícone preto/colorido em branco para destacar no laranja */
-  filter: brightness(0) invert(1); 
-}
-
-.action-circle-btn-profile:hover {
-  background-color: var(--orange-hover-profile);
-  transform: scale(1.05);
-}
-
-/* --- Botão Sair --- */
-.btn-logout-profile {
-  background-color: var(--orange-profile);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  cursor: pointer;
-  margin: 1rem auto 0;
-  width: fit-content;
-  transition: background-color 0.2s;
-}
-
-.btn-logout-profile:hover {
-  background-color: var(--orange-hover-profile);
-}
-
-/* NOVA CLASSE: Para o span que segura o ícone */
-.logout-icon-profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* NOVA CLASSE: Para a imagem de Logout em si */
-.logout-icon-profile img {
-  width: 24px;   /* Ajuste para não ficar gigante no botão */
-  height: 24px;
-  object-fit: contain;
-  /* Se o ícone for preto, pinta ele de branco para dar contraste com o laranja */
-  filter: brightness(0) invert(1); 
-}
+.btn-icon-eye-profile { background: none; border: none; cursor: pointer; padding: 0; }
+.actions-profile { display: flex; justify-content: space-between; margin-top: .5rem; padding: 0 .5rem; }

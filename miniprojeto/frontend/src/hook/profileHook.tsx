@@ -1,4 +1,4 @@
-import {userGets} from '../service/services.ts'
+import {userGets, userService} from '../service/services.ts'
 import type {ProfileResponse} from '../../types.d.ts'
 
 export const profileHook = () => {
@@ -35,10 +35,30 @@ export const profileHook = () => {
                 admin: false 
             }
         }
-        
-        
     }
 
-    return{getInfo}
+    async function deleteUser(user: string) {
+        try {
+            const delet = await userService.deleteUser({user});
+            return{
+                result: true,
+                mensagem: delet.message
+            }
+        } catch (error) {
+            let mensagem
+            if (error instanceof Error) {
+                mensagem = error.message; 
+            } else {
+                mensagem = `Erro desconhecido ${error}`
+            }
+            console.log("Mensagem do Back:", mensagem);
+            return {
+                result: false,
+                mensagem: mensagem
+            }
+        }
+    }
+
+    return{getInfo, deleteUser}
     
 }

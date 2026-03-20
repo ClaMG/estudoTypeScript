@@ -12,7 +12,7 @@ import icLogOut from '../../../../assets/ic_logout.png'
 import { useProfile } from './profile.model';
 
 export default function Profile(){
-    const {goToGetAdmins, goToGetUsers, goToGetPets, goToUpdate, goToLogOut, userData, showFields, showAdmFields} = useProfile()
+    const {goToGetAdmins, goToGetUsers, goToGetPets, goToUpdate, goToLogOut, userData, showFields, showAdmFields, deleteUser} = useProfile()
 
     return (
         <div className="app-wrapper-profile">
@@ -60,7 +60,7 @@ export default function Profile(){
                         {showAdmFields && (<button className="action-circle-btn-profile" onClick={goToGetUsers}><img src={icGetUser} alt="botão de ver usuários" /></button>)}
                         <button className="action-circle-btn-profile" onClick={goToGetPets}><img src={icGetPet} alt="botão de ver pets" /></button>
                         <button className="action-circle-btn-profile" onClick={goToUpdate}><img src={icEdit} alt="botão de editar" /></button>
-                        {showFields && (<button className="action-circle-btn-profile"><img src={icDelete} alt="botão de deletar" /></button>)}
+                        {showFields && (<button className="action-circle-btn-profile" onClick={deleteUser}><img src={icDelete} alt="botão de deletar" /></button>)}
                     </div>
 
                     <button className="btn-logout-profile" onClick={goToLogOut}>
